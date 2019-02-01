@@ -92,3 +92,45 @@ h1{
     line-height: 40px;
     color: #3c2e27;
 }
+
+.flex-grid {
+    display: flex;
+  }
+.flex-grid .col {
+    flex: 1;
+  }
+.flex-grid-thirds {
+    display: flex;
+    justify-content: space-between;
+  }
+.flex-grid-thirds .col {
+    width: 32%;
+  }
+  
+* {
+    box-sizing: border-box;
+  }
+body {
+    padding: 20px;
+  }
+.flex-grid { 
+    margin: 0 0 20px 0;
+  }
+.col {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .btn{
+    color: #3c2e27;
+    font-size: 20px;
+    background-color: #66CDAA;
+    border-radius: 20px;
+    border: 1px solid #3c2e27;
+  }
+
+  .btn:hover {
+    cursor: pointer;
+    background: #6d1f09;
+    color: #3c2e27;
+}
