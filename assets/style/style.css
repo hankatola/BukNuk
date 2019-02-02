@@ -76,18 +76,6 @@ h1{
     color: #3c2e27;
 }
 
-.signin a{
-    text-decoration: none;
-    font-size: 12px;
-    line-height: 20px;
-    color: #cfa67c;
-}
-
-.signin a:hover {
-    color: #3c2e27;
-}
-
-
 /* CSS for the divs at the top */
 .flex-grid {
     display: flex;

@@ -1,23 +1,28 @@
-
+var regBtn =  $("#registerBox");
+var signBtn = $("#loginBox")
 
 $("#left").on("click", function () {
     console.log("left was clicked");
-    if (!$("#loginBox").is("none")){
-            $("#loginBox").show();
-            
+    
+    console.log($("#registerBox"));
+    console.log(regBtn);
+    if (regBtn.css("display") !== "block") {
+        regBtn.css("display", "block");
+        signBtn.css("display", "none");
+    } else {
+        regBtn.css("display", "none");
     }
-    // if (!$("#loginBox").is("show")){
-    //         $("#loginBox").hide();
-    // }  .css("display", "none"); 
 
 }); // end the click
 
 $("#right").on("click", function () {
     console.log("right was clicked");
-    if (!$("#registerBox").is("none")){
-        $("#registerBox").show();
+    if (signBtn.css("display") !== "block") {
+        signBtn.css("display", "block");
+        regBtn.css("display", "none");
+    } else {
+        signBtn.css("display", "none");
     }
-   
+    
+      
 }); // end the click
-
-
