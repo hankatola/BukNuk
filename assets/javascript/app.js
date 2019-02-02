@@ -80,18 +80,26 @@ $(document).ready(function () {
     }
 
     //if user is logged in do this//
-    firebase.auth().onAuthStateChanged(user => {
+
+   var unsubscribe= firebase.auth().onAuthStateChanged(user => {
         if (user) {
             console.log(user.uid);
             currentUser = user.uid;
-
-            //not tested//
-            return document.location.href = "user.html";
+            if(window.location.href.includes('index.html')) {
+                 window.location="user.html"
+                unsubscribe();
+            }
+           
         } else {
 
         }
+        
     });
 
+    
+     
+   
+    
 
     var regBtn = $("#registerBox");
     var signBtn = $("#loginBox")
