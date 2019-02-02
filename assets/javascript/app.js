@@ -1,6 +1,3 @@
-
-
-
 $(document).ready(function () {
 
 
@@ -25,9 +22,11 @@ $(document).ready(function () {
 
 
     //sign up action//
-    $("#signupSubmit").on("click", function () {
+    $("#signupSubmit").on("click", function (e) {
+        e.preventDefault();
         var email = $("#signupEmail").val().trim();
         var password = $("#signupPassword").val().trim();
+        console.log(email, password);
         firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
             .then(function () {
                 return firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -41,9 +40,11 @@ $(document).ready(function () {
     });
 
     //sign in action//
-    $("#signinSubmit").on("click", function () {
+    $("#signinSubmit").on("click", function (e) {
+        e.preventDefault();
         var email = $("#signinEmail").val().trim();
         var password = $("#signinPassword").val().trim();
+        console.log(email, password);
         firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
             .then(function () {
                 return firebase.auth().signInWithEmailAndPassword(email, password);
@@ -51,71 +52,82 @@ $(document).ready(function () {
             .catch(function (error) {
                 var errorCode = error.code;
                 var errorMessage = error.message;
-                alert("please try again, Sign In unsuccesful")
             });
     });
 
     //sign user out//
     $("#sign-out-button").on("click", function () {
         firebase.auth().signOut();
+      
     });
 
     ///user can chose profile pic from computer, need to add to firebase as will not be stored on page refresh//
-    $("#chooseAProfilePic").change(function(){
+    $("#chooseAProfilePic").change(function () {
         uploadPic(this);
     });
 
-    function uploadPic(input){
+    function uploadPic(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
+
             reader.onload = function (e) {
                 $('#blank-profile-pic').attr('src', e.target.result);
             }
+          
+
             reader.readAsDataURL(input.files[0]);
         }
 
     }
 
     //if user is logged in do this//
-    firebase.auth().onAuthStateChanged(user => {
+
+   var unsubscribe= firebase.auth().onAuthStateChanged(user => {
         if (user) {
             console.log(user.uid);
             currentUser = user.uid;
-
-            //not tested//
-            document.location.href = "user.html";
+            if(window.location.href.includes('index.html')) {
+                 window.location="user.html"
+                unsubscribe();
+            }
+           
         } else {
 
         }
+        
     });
 
+    
+     
+   
+    
 
-  var regBtn =  $("#registerBox");
-  var signBtn = $("#loginBox")
+    var regBtn = $("#registerBox");
+    var signBtn = $("#loginBox")
 
-  $("#left").on("click", function () {
-      console.log("left was clicked");
+    $("#left").on("click", function () {
+        console.log("left was clicked");
 
-      console.log($("#registerBox"));
-      console.log(regBtn);
-      if (regBtn.css("display") !== "block") {
-          regBtn.css("display", "block");
-          signBtn.css("display", "none");
-      } else {
-          regBtn.css("display", "none");
-      }
+        console.log($("#registerBox"));
+        console.log(regBtn);
+        if (regBtn.css("display") !== "block") {
+            regBtn.css("display", "block");
+            signBtn.css("display", "none");
+        } else {
+            regBtn.css("display", "none");
+        }
 
-  }); // end the click
+    }); // end the click
 
-  $("#right").on("click", function () {
-      console.log("right was clicked");
-      if (signBtn.css("display") !== "block") {
-          signBtn.css("display", "block");
-          regBtn.css("display", "none");
-      } else {
-          signBtn.css("display", "none");
-      }      
-  }); // end the click
+    $("#right").on("click", function () {
+        console.log("right was clicked");
+        if (signBtn.css("display") !== "block") {
+            signBtn.css("display", "block");
+            regBtn.css("display", "none");
+        } else {
+            signBtn.css("display", "none");
+        }
+    }); // end the click
 
     /*
         Google Books API
@@ -129,7 +141,7 @@ $(document).ready(function () {
         α = $('#bookSearch').val()
         $('#bookSearch').val('')
         let url = 'https://www.googleapis.com/books/v1/volumes?q=' + α
-        $.get(url).then(function(β) {
+        $.get(url).then(function (β) {
             for (let i in β.items) {
                 let imgURL = β.items[i].volumeInfo.imageLinks.thumbnail
                 let γ = $('<div>').addClass('search-image').attr('data-id',β.items[i].id)
@@ -138,6 +150,7 @@ $(document).ready(function () {
             }
         })
     }
+
     function bookDetail() {
         // TODO: append ω data to correct place
         $('#details').empty()
@@ -152,7 +165,7 @@ $(document).ready(function () {
                 title: β.volumeInfo.title,
                 author: β.volumeInfo.authors[0],
                 rating: β.averageRating,
-                description: β.volumeInfo.description,  // should be inputted as .html(description)
+                description: β.volumeInfo.description, // should be inputted as .html(description)
                 publisher: β.volumeInfo.publisher,
                 date: β.volumeInfo.publishedDate,
                 pages: β.volumeInfo.pageCount,
@@ -218,12 +231,11 @@ $(document).ready(function () {
     }
 
     // Listeners
+  
     $(document).on('click','.book-search-form',bookSearch)
     $(document).on('click','.search-image',bookDetail)
 
 
 
-
     //document on ready closing tab//
 });
-
