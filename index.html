@@ -15,12 +15,8 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Dosis|Oxygen|Quicksand|Ubuntu" rel="stylesheet">
 
-    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="assets/javascript/app.js"></script>
 
    </head>
    
@@ -37,10 +33,10 @@
                         <form>
                             <p>Username</p>
 
-                                <input type="text" name="" placeholder="Enter Email">
+                                <input type="text" id="signinEmail" name="" placeholder="Enter Email">
                             <p>Password</p>
-                                <input type="password" name="" placeholder="Enter Password">
-                                <input type="submit" name="" value="Login">
+                                <input type="password" id="signinPassword" name="" placeholder="Enter Password">
+                                <input type="submit" id="signinSubmit" name="" value="Login">
                                
 
                         </form>
@@ -54,10 +50,10 @@
                          <h1>Create Account</h1>
                          <form>
                              <p>Email</p>
-                                 <input type="text" name="" placeholder="Enter Email">
+                                 <input type="text" id ="signupEmail" name="" placeholder="Enter Email">
                              <p>Password</p>
-                                 <input type="password" name="" placeholder="Create a Password">
-                                 <input type="submit" name="" value="Login">
+                                 <input type="password" id="signupPassword" name="" placeholder="Create a Password">
+                                 <input type="submit" id="signupSubmit" name="" value="Login">
                          </form>
                      </div>
                  </div>

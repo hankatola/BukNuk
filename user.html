@@ -19,7 +19,7 @@
 <body>
     <!-- Navigation bar -->
     <nav class="navbar navbar-light bg-light">
-        <span>Welcome <span class="userID">(username here)</span>!</span>
+        <span>Welcome <span id="userID">(username here)</span>!</span>
         <button type ="button" class="btn navbar-light" id="sign-out-button">Sign Out</button>
         </a>
     </nav>
@@ -28,7 +28,7 @@
     <div class="container">
         <div class="col-lg-4 left-side">
            <div class="user-image">
-                <div class="image-here"><img src="assets/images/blank-profile-picture.png" id="blank-profile-pic"></div>
+                <div class="image-here"><img src="assets/images/blank-user.png" id="blank-profile-pic"></div>
                 <form>
                     <div class="form-group">
                         
@@ -54,13 +54,13 @@
                             <label for="chooseAProfilePic">Upload a Profile Picture!</label>
                             <input type="file" class="form-control-file" accept="image/*" id="chooseAProfilePic">
                             <br>
-                            <input type="zipcode" class="form-control" id="exampleInputZipCode1" aria-describedby="zipCodeHelp" placeholder="Enter zip code">
+                            <!-- <input type="zipcode" class="form-control" id="exampleInputZipCode1" aria-describedby="zipCodeHelp" placeholder="Enter zip code"> -->
                             <br>
                             <input type="username" class="form-control" id="exampleInputUsername1" aria-describedby="usernameHelp" placeholder="Enter user name">
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" id="closeBtn" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="changesBtn">Save changes</button>
+                    <button type="button" class="btn btn-primary" id="changesBtn"data-dismiss="modal">Save changes</button>
                     </div>
                 </div>
                 </div>
