@@ -114,7 +114,7 @@ $(document).ready(function () {
           regBtn.css("display", "none");
       } else {
           signBtn.css("display", "none");
-      }      
+      }
   }); // end the click
 
     /*
@@ -125,7 +125,7 @@ $(document).ready(function () {
     function bookSearch(α) {
         // TODO: confirm images append to correct location
         α.preventDefault()
-        $('#search-results').empty()
+        $('#titleScroll').empty()
         α = $('#bookSearch').val()
         $('#bookSearch').val('')
         let url = 'https://www.googleapis.com/books/v1/volumes?q=' + α
@@ -134,13 +134,15 @@ $(document).ready(function () {
                 let imgURL = β.items[i].volumeInfo.imageLinks.thumbnail
                 let γ = $('<div>').addClass('search-image').attr('data-id',β.items[i].id)
                 $('<img>').attr('src',imgURL).attr('data-id',β.items[i].id).appendTo(γ)
-                γ.appendTo($('#search-results'))
+                γ.appendTo($('#titleScroll'))
+
+
             }
         })
     }
     function bookDetail() {
         // TODO: append ω data to correct place
-        $('#details').empty()
+        $('#search-results').empty()
         let α = $(this).attr('data-id')
         let url = 'https://www.googleapis.com/books/v1/volumes/' + α
         $.get(url).then(function(β) {
@@ -205,7 +207,7 @@ $(document).ready(function () {
             image.prependTo(row1)
 
             // create row 2
-            let row2 = $('<div>').addClass('row').html(ω.description)
+            let row2 = $('<div>').addClass('row book-description').html(ω.description)
             // append row 2 to row 1
             row1.append(row2)
 
@@ -213,7 +215,7 @@ $(document).ready(function () {
                 Append description object to target
                 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
             */
-            row1.appendTo($('#details'))
+            row1.appendTo($('#search-results'))
         })
     }
 
