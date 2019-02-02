@@ -296,3 +296,13 @@ body {
     width: 50vw;
     border: #6d1f09 solid 1px;
 }
+
+/* Book search formatting */
+.search-image {
+    padding-left: 5px;
+    padding-bottom: 5px;
+}
+
+.book-description {
+    padding: 5px;
+}
