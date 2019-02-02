@@ -204,22 +204,13 @@ input[type="password"] {
 #faves  {
     border-top: #6d1f09 2px solid;
 }
-/* width */
-::-webkit-scrollbar {
-    width: 10px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1; 
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #888; 
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555; 
-  }
+/* Title scroll bar in search books area */
+#titleScroll {
+    overflow-y: auto;
+    height: 50px;
+}
+/* Title scroll bar in search books area */
+#imgScroll  {
+    overflow-y: scroll;
+    height: 130px;
+}
