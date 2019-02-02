@@ -1,3 +1,5 @@
+
+/* css for the body */
 body {
     margin: 0;
     padding: 0;
@@ -12,6 +14,7 @@ body {
     /* font-family: 'Oxygen', sans-serif; */
 }
 
+/* CSS for the login/register box */
 .signin{
     width: 320px;
     height: 420px;
@@ -84,15 +87,8 @@ h1{
     color: #3c2e27;
 }
 
-#title {
-    color: white;
-    text-align: center;
-    margin-top: 60px;
-    font-size: 100px;
-    line-height: 40px;
-    color: #3c2e27;
-}
 
+/* CSS for the divs at the top */
 .flex-grid {
     display: flex;
   }
@@ -118,19 +114,42 @@ body {
   }
 .col {
     padding: 20px;
-    text-align: center;
   }
 
-  .btn{
-    color: #3c2e27;
+#left{
+    text-align: left;
+}
+#right{
+    text-align: right;
+}
+.btn{
+    color: #eee4d0;
     font-size: 20px;
     background-color: #66CDAA;
     border-radius: 20px;
     border: 1px solid #3c2e27;
+    font-family: 'Dosis', sans-serif;
   }
 
-  .btn:hover {
+.btn:hover {
     cursor: pointer;
     background: #6d1f09;
     color: #3c2e27;
+}
+
+#title {
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 100px;
+    line-height: 40px;
+    color: #3c2e27;
+}
+
+#loginBox {
+    display: none;
+}
+
+#registerBox {
+    display: none;
 }
