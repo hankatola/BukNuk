@@ -22,7 +22,6 @@ body {
 
 
 .signin {
-
     width: 320px;
     height: 420px;
     background: #000;
@@ -151,9 +150,8 @@ body {
     color: #3c2e27;
 }
 
-
 #loginBox {
-    display: none;
+    display: block;
 }
 
 #registerBox {
@@ -270,6 +268,7 @@ body {
 #faves  {
     border-top: #6d1f09 2px solid;
 }
+
 /* Favorite books section */
 #faveBooks  {
     overflow-y: scroll;
@@ -284,6 +283,41 @@ body {
     margin-top: 1vh
 }
 /* Search results in search books area */
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+/* CSS for Sign Out Page */
+#main{
+
+width: 100px; 
+height: 150px;
+/* background-position: center; */
+background-repeat: no-repeat;
+background-image: url(../images/icon3.png);
+margin: auto;
+}
+
+/* Title scroll bar in search books area */
+
 #titleScroll {
     overflow-y: scroll;
     width: 148px;
@@ -322,3 +356,4 @@ body {
 .book-description {
     padding: 5px;
 }
+
