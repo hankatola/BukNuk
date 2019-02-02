@@ -197,7 +197,7 @@ body {
     margin: 10px;
     background-color: #eee4d0;
     padding: 10px;
-    height: 410px;
+    height: 420px;
     border-radius: 10px;
     border: #6d1f09 solid 2px;
 
@@ -270,27 +270,43 @@ body {
 #faves  {
     border-top: #6d1f09 2px solid;
 }
-/* Title scroll bar in search books area */
+/* Favorite books section */
+#faveBooks  {
+    overflow-y: scroll;
+    width: 270px;
+    height: 270px;
+    background: white;
+    border-radius: 10px;
+    border: #6d1f09 solid 2px;
+    float: left;  
+    padding: 5px;
+    margin-left: 1vw;
+    margin-top: 1vh
+}
+/* Search results in search books area */
 #titleScroll {
     overflow-y: scroll;
-    width: 15vw;
+    width: 148px;
     margin-top: 4vh;
     height: 200px;
     background: white;
     border-radius: 10px;
     border: #6d1f09 solid 2px;
-    float: left;    
+    float: left;  
+    padding: 5px;
 }
-/* Image scroll bar area in search books area */
+/* Book details in search books area */
 #search-results {
     overflow-y: scroll;
-    width: 33vw;
+    width: 75%;
     height: 200px;
     background: white;
     border-radius: 10px;
     border: #6d1f09 solid 2px;
     float: right;
+    padding: 5px;
 }
+/* Edit profile button */
 #bookSearch {
     margin-left: 1vw;
     width: 50vw;
