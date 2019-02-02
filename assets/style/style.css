@@ -101,7 +101,7 @@ input[type="password"] {
     background-color: #eee4d0;
     padding: 10px;
     border-radius: 10px;
-    border: #6d1f09 solid 5px;
+    border: #6d1f09 solid 2px;
 
 }
 
@@ -125,7 +125,7 @@ input[type="password"] {
     padding: 10px;
     height: 400px;
     border-radius: 10px;
-    border: #6d1f09 solid 5px;
+    border: #6d1f09 solid 2px;
 
 }
 
@@ -133,9 +133,9 @@ input[type="password"] {
     margin: 10px;
     background-color: #eee4d0;
     padding: 10px;
-    height: 400px;
+    height: 410px;
     border-radius: 10px;
-    border: #6d1f09 solid 5px;
+    border: #6d1f09 solid 2px;
 
 }
 
@@ -145,7 +145,7 @@ input[type="password"] {
     padding: 10px;
     height: 400px;
     border-radius: 10px;
-    border: #6d1f09 solid 5px;
+    border: #6d1f09 solid 2px;
 
 }
 
@@ -159,22 +159,23 @@ input[type="password"] {
 /* Zip code input border */
 #exampleInputZipCode1   {
     color: black;
-    border: #3c2e27 2px solid;
+    border: #3c2e27 1px solid;
 }
 /* User name input border */
 #exampleInputUsername1   {
     color: black;
-    border: #3c2e27 2px solid;
+    border: #3c2e27 1px solid;
 }
 /* Submit button in search area div */
 #submitBtn  {
     background: #6d1f09;
-    border: #3c2e27 5px solid;
+    border: #3c2e27 2px solid;
+    margin-left: 1vw;
 }
 /* Modal */
 #modalBackground   {
     background: #eee4d0;
-    border: #6d1f09 solid 5px;
+    border: #6d1f09 solid 2px;
 }
 /* Modal title */
 #exampleModalLabel  {
@@ -183,17 +184,18 @@ input[type="password"] {
 /* Close button in modal */
 #closeBtn   {
     background: #66CDAA;
-    border: #3c2e27 2px solid;
+    border: #3c2e27 1px solid;
 }
 /* Save changes button in modal */
 #changesBtn {
     background: #6d1f09;
-    border: #3c2e27 2px solid;
+    border: #3c2e27 1px solid;
 }
 /* Edit user profile button*/
 #userBtn    {
     background: #6d1f09;
-    border: #3c2e27 2px solid;
+    border: #3c2e27 1px solid;
+    margin-left: 1vw;
 }
 /* Sign-out button */
 #sign-out-button {
@@ -206,11 +208,27 @@ input[type="password"] {
 }
 /* Title scroll bar in search books area */
 #titleScroll {
-    overflow-y: auto;
-    height: 50px;
-}
-/* Title scroll bar in search books area */
-#imgScroll  {
     overflow-y: scroll;
-    height: 130px;
+    width: 15vw;
+    margin-top: 4vh;
+    height: 200px;
+    background: white;
+    border-radius: 10px;
+    border: #6d1f09 solid 2px;
+    float: left;    
+}
+/* Image scroll bar area in search books area */
+#search-results {
+    overflow-y: scroll;
+    width: 33vw;
+    height: 200px;
+    background: white;
+    border-radius: 10px;
+    border: #6d1f09 solid 2px;
+    float: right;
+}
+#bookSearch {
+    margin-left: 1vw;
+    width: 50vw;
+    border: #6d1f09 solid 1px;
 }
