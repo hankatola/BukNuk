@@ -1,4 +1,9 @@
+
+
+/* css for the body */
+=======
 /* Body styling */
+
 body {
     margin: 0;
     padding: 0;
@@ -13,7 +18,12 @@ body {
     /* font-family: 'Oxygen', sans-serif; */
 }
 
+
+/* CSS for the login/register box */
+
+=======
 .signin {
+
     width: 320px;
     height: 420px;
     background: #000;
@@ -76,26 +86,81 @@ input[type="password"] {
     color: #3c2e27;
 }
 
+
+/* CSS for the divs at the top */
+.flex-grid {
+    display: flex;
+  }
+.flex-grid .col {
+    flex: 1;
+  }
+.flex-grid-thirds {
+    display: flex;
+    justify-content: space-between;
+  }
+.flex-grid-thirds .col {
+    width: 32%;
+  }
+  
+* {
+    box-sizing: border-box;
+  }
+body {
+    padding: 20px;
+  }
+.flex-grid { 
+    margin: 0 0 20px 0;
+  }
+.col {
+    padding: 20px;
+  }
+
+#left{
+    text-align: left;
+=======
 .signin a {
     text-decoration: none;
     font-size: 12px;
     line-height: 20px;
     color: #cfa67c;
-}
 
-.signin a:hover {
+}
+#right{
+    text-align: right;
+}
+.btn{
+    color: #eee4d0;
+    font-size: 20px;
+    background-color: #66CDAA;
+    border-radius: 20px;
+    border: 1px solid #3c2e27;
+    font-family: 'Dosis', sans-serif;
+  }
+
+.btn:hover {
+    cursor: pointer;
+    background: #6d1f09;
     color: #3c2e27;
 }
 
 #title {
     color: white;
     text-align: center;
-    margin-top: 60px;
+    margin-top: 20px;
     font-size: 100px;
     line-height: 40px;
     color: #3c2e27;
 }
 
+
+#loginBox {
+    display: none;
+}
+
+#registerBox {
+    display: none;
+}
+=======
 .user-image {
     margin: 10px;
     background-color: #eee4d0;
