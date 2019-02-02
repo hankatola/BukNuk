@@ -52,8 +52,31 @@ $(document).ready(function () {
             });
     });
 
+    //sign user out//
+    $("#sign-out-button").on("click", function () {
+        firebase.auth().signOut();
+        
+    });
 
+    ///user can chose profile pic from computer, need to add to firebase as will not be stored on page refresh//
+    $("#chooseAProfilePic").change(function(){
+        uploadPic(this);
+    });
 
+    function uploadPic(input){
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#blank-profile-pic').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+
+    }
+
+    //if user is logged in do this//
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
             console.log(user.uid);
@@ -121,6 +144,8 @@ $(document).ready(function () {
     // TODO: change/update listener location
     $(document).on('click','.search',bookSearch)
     $(document).on('click','.search-image',bookDetail)
+
+
 
 
     //document on ready closing tab//
