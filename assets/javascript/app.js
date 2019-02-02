@@ -1,4 +1,13 @@
+
+
+
 $(document).ready(function () {
+
+
+    /*
+        Firebase
+        ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+    */
     var config = {
         apiKey: "AIzaSyCLQQaC2PjCbaoYwkeYea8mlJeNwX-G7Y4",
         authDomain: "project1test-346b5.firebaseapp.com",
@@ -84,17 +93,89 @@ $(document).ready(function () {
     });
 
 
+  var regBtn =  $("#registerBox");
+  var signBtn = $("#loginBox")
 
+  $("#left").on("click", function () {
+      console.log("left was clicked");
 
+      console.log($("#registerBox"));
+      console.log(regBtn);
+      if (regBtn.css("display") !== "block") {
+          regBtn.css("display", "block");
+          signBtn.css("display", "none");
+      } else {
+          regBtn.css("display", "none");
+      }
 
+  }); // end the click
 
+  $("#right").on("click", function () {
+      console.log("right was clicked");
+      if (signBtn.css("display") !== "block") {
+          signBtn.css("display", "block");
+          regBtn.css("display", "none");
+      } else {
+          signBtn.css("display", "none");
+      }      
+  }); // end the click
 
+    /*
+        Google Books API
+        ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+    */
+    // Functions
+    function bookSearch(α) {
+        // TODO: get search string from correct id in html
+        // TODO: append search results to correct place in html
+        α.preventDefault()
+        $('#content').empty()
+        α = $('#search-term').val()
+        $('#search-term').val('')
+        let url = 'https://www.googleapis.com/books/v1/volumes?q=' + α
+        $.get(url).then(function(β) {
+            for (let i in β.items) {
+                let imgURL = β.items[i].volumeInfo.imageLinks.thumbnail
+                let γ = $('<div>').addClass('search-image').attr('data-id',β.items[i].id)
+                $('<img>').attr('src',imgURL).attr('data-id',β.items[i].id).appendTo(γ)
+                γ.appendTo($('#content'))
+            }
+        })
+    }
+    function bookDetail() {
+        // TODO: append ω data to correct place
+        $('#details').empty()
+        let α = $(this).attr('data-id')
+        let url = 'https://www.googleapis.com/books/v1/volumes/' + α
+        $.get(url).then(function(β) {
+            console.log(β)
+            let ω = {
+                title: β.volumeInfo.title,
+                author: β.volumeInfo.authors[0],
+                rating: β.averageRating,
+                description: β.volumeInfo.description,  // should be inputted as .html(description)
+                publisher: β.volumeInfo.publisher,
+                date: β.volumeInfo.publishedDate,
+                pages: β.volumeInfo.pageCount,
+                link: β.volumeInfo.previewLink,
+                forSale: β.saleInfo,
+                image: β.volumeInfo.imageLinks.large,
+            }
+            for (let i in ω) {
+                $('<div>').html(ω[i]).appendTo($('#details'))
+            }
+            return ω
+        })
+    }
 
-
-
+    // Listeners
+    // TODO: change/update listener location
+    $(document).on('click','.search',bookSearch)
+    $(document).on('click','.search-image',bookDetail)
 
 
 
 
     //document on ready closing tab//
 });
+
