@@ -195,7 +195,7 @@ body {
     margin: 10px;
     background-color: #eee4d0;
     padding: 10px;
-    height: 420px;
+    height: auto;
     border-radius: 10px;
     border: #6d1f09 solid 2px;
 
@@ -321,7 +321,7 @@ margin: auto;
 #titleScroll {
     overflow-y: scroll;
     width: 148px;
-    margin-top: 4vh;
+    
     height: 200px;
     background: white;
     border-radius: 10px;
@@ -332,7 +332,7 @@ margin: auto;
 /* Book details in search books area */
 #search-results {
     overflow-y: scroll;
-    width: 75%;
+    width: 435px;
     height: 200px;
     background: white;
     border-radius: 10px;
