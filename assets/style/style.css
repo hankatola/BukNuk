@@ -165,7 +165,7 @@ body {
     background-color: #eee4d0;
     padding: 10px;
     border-radius: 10px;
-    border: #6d1f09 solid 5px;
+    border: #6d1f09 solid 2px;
 
 }
 
@@ -189,7 +189,7 @@ body {
     padding: 10px;
     height: 400px;
     border-radius: 10px;
-    border: #6d1f09 solid 5px;
+    border: #6d1f09 solid 2px;
 
 }
 
@@ -197,9 +197,9 @@ body {
     margin: 10px;
     background-color: #eee4d0;
     padding: 10px;
-    height: 400px;
+    height: 410px;
     border-radius: 10px;
-    border: #6d1f09 solid 5px;
+    border: #6d1f09 solid 2px;
 
 }
 
@@ -209,7 +209,7 @@ body {
     padding: 10px;
     height: 400px;
     border-radius: 10px;
-    border: #6d1f09 solid 5px;
+    border: #6d1f09 solid 2px;
 
 }
 
@@ -223,22 +223,23 @@ body {
 /* Zip code input border */
 #exampleInputZipCode1   {
     color: black;
-    border: #3c2e27 2px solid;
+    border: #3c2e27 1px solid;
 }
 /* User name input border */
 #exampleInputUsername1   {
     color: black;
-    border: #3c2e27 2px solid;
+    border: #3c2e27 1px solid;
 }
 /* Submit button in search area div */
 #submitBtn  {
     background: #6d1f09;
-    border: #3c2e27 5px solid;
+    border: #3c2e27 2px solid;
+    margin-left: 1vw;
 }
 /* Modal */
 #modalBackground   {
     background: #eee4d0;
-    border: #6d1f09 solid 5px;
+    border: #6d1f09 solid 2px;
 }
 /* Modal title */
 #exampleModalLabel  {
@@ -247,17 +248,18 @@ body {
 /* Close button in modal */
 #closeBtn   {
     background: #66CDAA;
-    border: #3c2e27 2px solid;
+    border: #3c2e27 1px solid;
 }
 /* Save changes button in modal */
 #changesBtn {
     background: #6d1f09;
-    border: #3c2e27 2px solid;
+    border: #3c2e27 1px solid;
 }
 /* Edit user profile button*/
 #userBtn    {
     background: #6d1f09;
-    border: #3c2e27 2px solid;
+    border: #3c2e27 1px solid;
+    margin-left: 1vw;
 }
 /* Sign-out button */
 #sign-out-button {
@@ -268,22 +270,29 @@ body {
 #faves  {
     border-top: #6d1f09 2px solid;
 }
-/* width */
-::-webkit-scrollbar {
-    width: 10px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1; 
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #888; 
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555; 
-  }
+/* Title scroll bar in search books area */
+#titleScroll {
+    overflow-y: scroll;
+    width: 15vw;
+    margin-top: 4vh;
+    height: 200px;
+    background: white;
+    border-radius: 10px;
+    border: #6d1f09 solid 2px;
+    float: left;    
+}
+/* Image scroll bar area in search books area */
+#search-results {
+    overflow-y: scroll;
+    width: 33vw;
+    height: 200px;
+    background: white;
+    border-radius: 10px;
+    border: #6d1f09 solid 2px;
+    float: right;
+}
+#bookSearch {
+    margin-left: 1vw;
+    width: 50vw;
+    border: #6d1f09 solid 1px;
+}
