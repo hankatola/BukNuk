@@ -16,8 +16,10 @@ $(document).ready(function () {
     firebase.initializeApp(config);
     //set firebase ref//
     var database = firebase.database();
+    var storage = firebase.storage().ref();
     //set variable to hold unique user ID of logged in user. This is used to save user data later on//
     var currentUser = "";
+    var currentUserLocation="";
 
 
 
@@ -79,6 +81,26 @@ $(document).ready(function () {
         }
 
     }
+    //user profile update//
+    $("#changesBtn").on("click", function(){
+         var zipcode= $("#exampleInputZipCode1").val().trim();
+         var username= $("#exampleInputUsername1").val().trim();
+        firebase.database().ref('users/' + currentUser).set({
+            zipcode:zipcode,
+            username: username,
+            //figure out how to save image to firebase//
+
+        });
+    })
+    ///update user info on save//
+    database.ref().child("users").on("value", function (snapshot) {
+        var pic = $("#chooseAProfilePic").get(0).files[0];
+        console.log(pic);
+        thisUser = (snapshot.child(currentUser).val());
+        console.log(thisUser.username);
+        var name = thisUser.username;
+        $("#userID").text(name);
+    });
 
     //if user is logged in do this//
 
