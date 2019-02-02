@@ -15,6 +15,13 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Dosis|Oxygen|Quicksand|Ubuntu" rel="stylesheet">
 
+    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/javascript/app.js"></script>
+
    </head>
    
    <body>
@@ -29,10 +36,18 @@
                         <h1>Sign In</h1>
                         <form>
                             <p>Username</p>
+
                                 <input type="text" name="" placeholder="Enter Email">
                             <p>Password</p>
                                 <input type="password" name="" placeholder="Enter Password">
                                 <input type="submit" name="" value="Login">
+=======
+                                <input type="text" name="" id="signinEmail" placeholder="Enter Username">
+                            <p>Password</p>
+                                <input type="password" name="" id="signinPassword" placeholder="Enter Password">
+                                <input type="submit" name="" id="signinSubmit" value="Login">
+                                <a href="#">Create an Account</a>
+
                         </form>
                     </div>
                 </div>
