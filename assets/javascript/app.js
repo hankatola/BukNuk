@@ -55,7 +55,6 @@ $(document).ready(function () {
     //sign user out//
     $("#sign-out-button").on("click", function () {
         firebase.auth().signOut();
-        
     });
 
     ///user can chose profile pic from computer, need to add to firebase as will not be stored on page refresh//
@@ -66,11 +65,9 @@ $(document).ready(function () {
     function uploadPic(input){
         if (input.files && input.files[0]) {
             var reader = new FileReader();
-            
             reader.onload = function (e) {
                 $('#blank-profile-pic').attr('src', e.target.result);
             }
-            
             reader.readAsDataURL(input.files[0]);
         }
 
@@ -98,19 +95,18 @@ $(document).ready(function () {
     */
     // Functions
     function bookSearch(α) {
-        // TODO: get search string from correct id in html
-        // TODO: append search results to correct place in html
+        // TODO: confirm images append to correct location
         α.preventDefault()
-        $('#content').empty()
-        α = $('#search-term').val()
-        $('#search-term').val('')
+        $('#search-results').empty()
+        α = $('#bookSearch').val()
+        $('#bookSearch').val('')
         let url = 'https://www.googleapis.com/books/v1/volumes?q=' + α
         $.get(url).then(function(β) {
             for (let i in β.items) {
                 let imgURL = β.items[i].volumeInfo.imageLinks.thumbnail
                 let γ = $('<div>').addClass('search-image').attr('data-id',β.items[i].id)
                 $('<img>').attr('src',imgURL).attr('data-id',β.items[i].id).appendTo(γ)
-                γ.appendTo($('#content'))
+                γ.appendTo($('#search-results'))
             }
         })
     }
@@ -120,7 +116,10 @@ $(document).ready(function () {
         let α = $(this).attr('data-id')
         let url = 'https://www.googleapis.com/books/v1/volumes/' + α
         $.get(url).then(function(β) {
-            console.log(β)
+            /*
+                Parse out needed data from return value β and store in ω
+                ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+            */
             let ω = {
                 title: β.volumeInfo.title,
                 author: β.volumeInfo.authors[0],
@@ -131,18 +130,67 @@ $(document).ready(function () {
                 pages: β.volumeInfo.pageCount,
                 link: β.volumeInfo.previewLink,
                 forSale: β.saleInfo,
-                image: β.volumeInfo.imageLinks.large,
+                image: β.volumeInfo.imageLinks.thumbnail,
             }
-            for (let i in ω) {
-                $('<div>').html(ω[i]).appendTo($('#details'))
+
+            /*
+                Create html objects from data in ω
+                ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+            */
+            // create image & favorite button
+            let img = $('<img>').attr('src',ω.image).attr('data-id',α)
+            let btn = $('<button>').addClass('btn btn-primary').attr('id','add-to-favorites').text('Add to Favorites')
+            // Image & button is img
+            img.append(btn)
+
+            // create info section
+            let ttle = $('<div>').html('<strong>' + ω.title + '</strong>')
+            let athr = $('<div>').text('Author: ' + ω.author)
+            if (ω.rating) {
+                ω.rating = ω.rating + '/5'
+            } else {
+                ω.rating = 'None'
             }
-            return ω
+            if (!ω.publisher || ω.publisher === undefined || ω.publisher === null) {
+                ω.publisher = 'No data available'
+            }
+            let rtng = $('<div>').text('Rating: ' + ω.rating)
+            let pges = $('<div>').text('Pages: ' + ω.pages)
+            let pubr = $('<div>').text('Publisher: ' + ω.publisher)
+            let pbdt = $('<div>').text('Date: ' + ω.date)
+            let link = $('<div>').html('<a href="' + ω.link + '">View on Google Play Books</a>')
+            // info object is ttle
+            ttle.append(athr,rtng,pges,pubr,pbdt,link)
+
+            // create row 1
+            // col 2
+            let detail = $('<div>').addClass('col')
+            // detail is detail div within a column
+            ttle.appendTo(detail)
+
+            // col 1
+            let image = $('<div>').addClass('col')
+            img.appendTo(image)
+            // row 1
+            let row1 = $('<div>').addClass('row')
+            detail.appendTo(row1)
+            image.prependTo(row1)
+
+            // create row 2
+            let row2 = $('<div>').addClass('row').html(ω.description)
+            // append row 2 to row 1
+            row1.append(row2)
+
+            /*
+                Append description object to target
+                ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+            */
+            row1.appendTo($('#details'))
         })
     }
 
     // Listeners
-    // TODO: change/update listener location
-    $(document).on('click','.search',bookSearch)
+    $(document).on('click','.book-search-form',bookSearch)
     $(document).on('click','.search-image',bookDetail)
 
 

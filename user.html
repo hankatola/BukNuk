@@ -5,46 +5,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="assets/style/style.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Dosis|Oxygen|Quicksand|Ubuntu" rel="stylesheet">
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
-   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-   crossorigin=""/>
-
-   <link href="assets/style/map.css" rel="stylesheet">
-
-   <!-- Leaflet JS library -->
-    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
-    integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-    crossorigin=""></script>
-
-    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="assets/javascript/map.js"></script>
+    <!-- Emojis -->
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+    <title>BükNük User Page</title>
 </head>
 
 <body>
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-light bg-light">
+        <span>Welcome <span class="userID">(username here)</span>!</span>
+        <button type ="button" class="btn navbar-light" id="sign-out-button">Sign Out</button>
+        </a>
+    </nav>
 
-    <div id="container">
-            <div class="row">
-                <div class="col-6">Book list to go here</div>
-                <div class="col-6">
-                    <div id="mapid"></div>
+    <!-- User profile image section -->
+    <div class="container">
+        <div class="col-lg-4 left-side">
+           <div class="user-image">
+                <div class="image-here"><img src="assets/images/blank-profile-picture.png" id="blank-profile-pic"></div>
+                <form>
+                    <div class="form-group">
+                        
+    <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" id="userBtn" data-toggle="modal" data-target="#exampleModal">
+                                Edit Profile
+                            </button>
+                                </div>
+                            </form>   
+                        </div>
+  
+    <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content" id="modalBackground">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">BükNük Profile</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                            <label for="chooseAProfilePic">Upload a Profile Picture!</label>
+                            <input type="file" class="form-control-file" accept="image/*" id="chooseAProfilePic">
+                            <br>
+                            <input type="zipcode" class="form-control" id="exampleInputZipCode1" aria-describedby="zipCodeHelp" placeholder="Enter zip code">
+                            <br>
+                            <input type="username" class="form-control" id="exampleInputUsername1" aria-describedby="usernameHelp" placeholder="Enter user name">
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="closeBtn" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="changesBtn">Save changes</button>
+                    </div>
                 </div>
-                
+                </div>
             </div>
-        
-    </div>
-    
     
     <!-- Favorites section -->
             <div class="favorites-area">
@@ -61,10 +81,16 @@
                         <label for="bookSearch">
                             <h2>Search for Books</h2>
                         </label>
-                        <input type="text" class="form-control" id="bookSearch" placeholder="Title/Author etc">
+                        <input type="text" class="form-control book-search-form" id="bookSearch" placeholder="Title/Author etc">
                     </div>
-                    <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
+                    <button type="submit" class="btn btn-primary book-search-form" id="submitBtn">Submit</button>
                 </form>
+                <div class="container">
+                <div id="titleScroll"></div>
+                <br>
+                <div id="search-results"></div>
+                </div>
+                <br>
             </div>
     
     <!-- Bukworms in your area section -->        
