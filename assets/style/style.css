@@ -1,7 +1,6 @@
 
 
 /* css for the body */
-=======
 /* Body styling */
 
 body {
@@ -21,7 +20,6 @@ body {
 
 /* CSS for the login/register box */
 
-=======
 .signin {
 
     width: 320px;
@@ -117,7 +115,7 @@ body {
 
 #left{
     text-align: left;
-=======
+
 .signin a {
     text-decoration: none;
     font-size: 12px;
@@ -160,7 +158,7 @@ body {
 #registerBox {
     display: none;
 }
-=======
+
 .user-image {
     margin: 10px;
     background-color: #eee4d0;
