@@ -60,6 +60,7 @@ $(document).ready(function () {
     //sign user out//
     $("#sign-out-button").on("click", function () {
         firebase.auth().signOut();
+        window.location="signOut.html"
       
     });
 
