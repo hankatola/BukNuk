@@ -172,6 +172,7 @@ body {
     width: 200px;
     background-color: #66CDAA;
     margin: 20px;
+    margin-left: 35px;
     border-radius: 10px;
 }
 
@@ -233,7 +234,7 @@ body {
 #submitBtn  {
     background: #6d1f09;
     border: #3c2e27 2px solid;
-    margin-left: 19px;
+    margin-left: 25px;
     margin-top: 5px;
 }
 /* Modal */
@@ -259,7 +260,8 @@ body {
 #userBtn    {
     background: #6d1f09;
     border: #3c2e27 1px solid;
-    margin-left: 70px;
+    margin-left: 80px;
+    margin-top: 20px;
 }
 /* Sign-out button */
 #sign-out-button {
@@ -279,7 +281,7 @@ body {
 /* Favorite books section */
 #faveBooks  {
     overflow-y: scroll;
-    width: 270px;
+    width: 295px;
     height: 270px;
     background: white;
     border-radius: 10px;
@@ -348,12 +350,12 @@ margin: auto;
 }
 /* Book search title */
 #bookSearchTitle    {
-    padding-left: 20px;
+    padding-left: 25px;
 }
 /* Edit profile button */
 #bookSearch {
     margin-left: 20px;
-    width: 50vw;
+    width: 52vw;
     border: #6d1f09 solid 1px;
 }
 /* Book search formatting */
@@ -363,4 +365,8 @@ margin: auto;
 }
 .book-description {
     padding: 5px;
+}
+/* Map title */
+#mapTitle  {
+    margin-left: 15px;
 }
