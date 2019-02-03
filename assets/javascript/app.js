@@ -105,11 +105,11 @@ $(document).ready(function () {
 
     //if user is logged in do this//
 
-   var unsubscribe= firebase.auth().onAuthStateChanged(user => {
+    var unsubscribe= firebase.auth().onAuthStateChanged(user => {
         if (user) {
             console.log(user.uid);
             currentUser = user.uid;
-            if(window.location.href.includes('index.html')) {
+            if(window.location.href.includes('index.html')|| window.location.href === "https://hankatola.github.io/BukNuk/") {
                  window.location="user.html"
                 unsubscribe();
             }
@@ -119,7 +119,6 @@ $(document).ready(function () {
         }
         
     });
-
     
      
    
