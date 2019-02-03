@@ -16,10 +16,13 @@ $(document).ready(function () {
     firebase.initializeApp(config);
     //set firebase ref//
     var database = firebase.database();
-    var storage = firebase.storage().ref();
+    var storage = firebase.storage();
+    var storageRef = storage.ref();
+
     //set variable to hold unique user ID of logged in user. This is used to save user data later on//
     var currentUser = "";
-    var currentUserLocation="";
+    var currentUserLocation = "";
+
 
 
 
@@ -60,8 +63,8 @@ $(document).ready(function () {
     //sign user out//
     $("#sign-out-button").on("click", function () {
         firebase.auth().signOut();
-        window.location="signOut.html"
-      
+        window.location = "signOut.html"
+
     });
 
     ///user can chose profile pic from computer, need to add to firebase as will not be stored on page refresh//
@@ -76,53 +79,68 @@ $(document).ready(function () {
             reader.onload = function (e) {
                 $('#blank-profile-pic').attr('src', e.target.result);
             }
-          
+
 
             reader.readAsDataURL(input.files[0]);
         }
 
     }
+
     //user profile update//
-    $("#changesBtn").on("click", function(){
-         var zipcode= $("#exampleInputZipCode1").val().trim();
-         var username= $("#exampleInputUsername1").val().trim();
+    $("#changesBtn").on("click", function () {
+
+        var username = $("#exampleInputUsername1").val().trim();
         firebase.database().ref('users/' + currentUser).set({
-            zipcode:zipcode,
             username: username,
-            //figure out how to save image to firebase//
+
 
         });
+        //store image to firebase//
+        var file = $('#chooseAProfilePic').get(0).files[0];
+        var name = "profilePic" + currentUser;
+        var metadata = {
+            contentType: file.type
+        };
+        storageRef.child(name).put(file, metadata);
+
     })
     ///update user info on save//
     database.ref().child("users").on("value", function (snapshot) {
-        var pic = $("#chooseAProfilePic").get(0).files[0];
-        console.log(pic);
         thisUser = (snapshot.child(currentUser).val());
         console.log(thisUser.username);
         var name = thisUser.username;
         $("#userID").text(name);
     });
 
+
     //if user is logged in do this//
 
-    var unsubscribe= firebase.auth().onAuthStateChanged(user => {
+    var unsubscribe = firebase.auth().onAuthStateChanged(user => {
         if (user) {
             console.log(user.uid);
             currentUser = user.uid;
-            if(window.location.href.includes('index.html')|| window.location.href === "https://hankatola.github.io/BukNuk/") {
-                 window.location="user.html"
+            //update profile pic to that stored in firebase database//
+            var picRef = storageRef.child("profilePic" + currentUser + "");
+            picRef.getDownloadURL().then(function (url) {
+                $('#blank-profile-pic').attr('src', url);
+            })
+            //if logged in direct to user.html//
+            if (window.location.href.includes('index.html') || window.location.href === "https://hankatola.github.io/BukNuk/") {
+                window.location = "user.html"
                 unsubscribe();
+
+
             }
-           
+
         } else {
 
         }
-        
+
     });
-    
-     
-   
-    
+
+
+
+
 
     var regBtn = $("#registerBox");
     var signBtn = $("#loginBox")
@@ -167,8 +185,8 @@ $(document).ready(function () {
         $.get(url).then(function (β) {
             for (let i in β.items) {
                 let imgURL = β.items[i].volumeInfo.imageLinks.thumbnail
-                let γ = $('<div>').addClass('search-image').attr('data-id',β.items[i].id)
-                $('<img>').attr('src',imgURL).attr('data-id',β.items[i].id).appendTo(γ)
+                let γ = $('<div>').addClass('search-image').attr('data-id', β.items[i].id)
+                $('<img>').attr('src', imgURL).attr('data-id', β.items[i].id).appendTo(γ)
                 γ.appendTo($('#titleScroll'))
 
 
@@ -181,7 +199,7 @@ $(document).ready(function () {
         $('#search-results').empty()
         let α = $(this).attr('data-id')
         let url = 'https://www.googleapis.com/books/v1/volumes/' + α
-        $.get(url).then(function(β) {
+        $.get(url).then(function (β) {
             /*
                 Parse out needed data from return value β and store in ω
                 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -204,8 +222,8 @@ $(document).ready(function () {
                 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
             */
             // create image & favorite button
-            let img = $('<img>').attr('src',ω.image).attr('data-id',α)
-            let btn = $('<button>').addClass('btn btn-primary').attr('id','add-to-favorites').text('Add to Favorites')
+            let img = $('<img>').attr('src', ω.image).attr('data-id', α)
+            let btn = $('<button>').addClass('btn btn-primary').attr('id', 'add-to-favorites').text('Add to Favorites')
             // Image & button is img
             img.append(btn)
 
@@ -226,7 +244,7 @@ $(document).ready(function () {
             let pbdt = $('<div>').text('Date: ' + ω.date)
             let link = $('<div>').html('<a href="' + ω.link + '">View on Google Play Books</a>')
             // info object is ttle
-            ttle.append(athr,rtng,pges,pubr,pbdt,link)
+            ttle.append(athr, rtng, pges, pubr, pbdt, link)
 
             // create row 1
             // col 2
@@ -256,9 +274,9 @@ $(document).ready(function () {
     }
 
     // Listeners
-  
-    $(document).on('click','.book-search-form',bookSearch)
-    $(document).on('click','.search-image',bookDetail)
+
+    $(document).on('click', '.book-search-form', bookSearch)
+    $(document).on('click', '.search-image', bookDetail)
 
 
 
