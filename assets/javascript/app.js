@@ -22,11 +22,11 @@ $(document).ready(function () {
     //set variable to hold unique user ID of logged in user. This is used to save user data later on//
     var currentUser = "";
     var currentUserLocation = { // Set our class as the default location if we can't get the location
-        coords: {
+         
             latitude: 35.851579,
             longitude: -78.795865
         }
-    }
+    
 
     navigator.geolocation.getCurrentPosition(function(position) {
         var userLocation = {
@@ -49,6 +49,8 @@ $(document).ready(function () {
                 firebase.auth().createUserWithEmailAndPassword(email, password)
                     .then(function(user) {
                     // When we create a new user, set up the database entry using UID as key
+                    currentUserLocation = JSON.stringify(currentUserLocation);
+                    console.log(currentUserLocation)
                         firebase.database().ref('users/' + user.user.uid).set({
                             username: email, // Default user-name to e-mail
                             location: currentUserLocation,
@@ -122,8 +124,8 @@ $(document).ready(function () {
     $("#changesBtn").on("click", function () {
 
         var username = $("#exampleInputUsername1").val().trim();
-        firebase.database().ref('users/' + currentUser).set({
-            username: username,
+        firebase.database().ref('users/' + currentUser).update({
+             username:username,
 
 
         });
