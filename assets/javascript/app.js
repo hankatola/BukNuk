@@ -122,9 +122,8 @@ $(document).ready(function () {
     $("#changesBtn").on("click", function () {
 
         var username = $("#exampleInputUsername1").val().trim();
-        firebase.database().ref('users/' + currentUser).set({
-            username: username,
-
+        firebase.database().ref('users/' + currentUser).update({
+             username:username,
 
         });
         //store image to firebase//
