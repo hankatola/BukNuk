@@ -21,10 +21,22 @@ $(document).ready(function () {
 
     //set variable to hold unique user ID of logged in user. This is used to save user data later on//
     var currentUser = "";
-    var currentUserLocation = "";
+    var currentUserLocation = { // Set our class as the default location if we can't get the location
+        coords: {
+            latitude: 35.851579,
+            longitude: -78.795865
+        }
+    }
 
-
-
+    navigator.geolocation.getCurrentPosition(function(position) {
+        var userLocation = {
+            coords: {
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude
+            }
+        }
+        currentUserLocation = userLocation
+    })
 
     //sign up action//
     $("#signupSubmit").on("click", function (e) {
@@ -34,12 +46,26 @@ $(document).ready(function () {
         console.log(email, password);
         firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
             .then(function () {
-                return firebase.auth().createUserWithEmailAndPassword(email, password)
-            })
+                firebase.auth().createUserWithEmailAndPassword(email, password)
+                    .then(function(user) {
+                    // When we create a new user, set up the database entry using UID as key
+                        firebase.database().ref('users/' + user.user.uid).set({
+                            username: email, // Default user-name to e-mail
+                            location: currentUserLocation,
+                            favoriteBooks: []
+                        });
+
+                    }, function(error) {
+                        var errorCode = error.code;
+                        var errorMessage = error.message;
+                        console.log(errorCode, errorMessage)
+                    });
+                })
             .catch(function (error) {
                 // Handle Errors here.
                 var errorCode = error.code;
                 var errorMessage = error.message;
+                console.log(errorCode, errorMessage)
                 alert("please try again, Sign Up unsuccesful")
             });
     });
@@ -52,11 +78,17 @@ $(document).ready(function () {
         console.log(email, password);
         firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
             .then(function () {
-                return firebase.auth().signInWithEmailAndPassword(email, password);
+                firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+                    // Handle Errors here.
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    console.log(errorCode, errorMessage)
+                  });
             })
             .catch(function (error) {
                 var errorCode = error.code;
                 var errorMessage = error.message;
+                console.log(errorCode, errorMessage)
             });
     });
 
@@ -133,7 +165,7 @@ $(document).ready(function () {
             }
 
         } else {
-
+            
         }
 
     });
