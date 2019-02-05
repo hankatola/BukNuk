@@ -160,19 +160,23 @@ body {
 
 .user-image {
     margin: 10px;
-    background-color: #eee4d0;
-    padding: 37px;
+    background-color: #eee4d0; 
+    padding: 2vh;
     border-radius: 10px;
-    border: #6d1f09 solid 2px;
-
+    background: #000;
+    background: rgba(14, 1, 26, 0.4);
+    height: 46vh;
+/*    border: #6d1f09 solid 2px; */
+    
 }
 
 .image-here {
     height: 200px;
     width: 200px;
     background-color: #66CDAA;
-    margin: 20px;
-    margin-left: 35px;
+    justify-content: center;
+    margin-left: 5vw;
+    margin-top: 1vh;
     border-radius: 10px;
 }
 
@@ -189,7 +193,10 @@ body {
     padding: 10px;
     height: 400px;
     border-radius: 10px;
-    border: #6d1f09 solid 2px;
+    color: #cfa67c;
+    background: #000;
+    background: rgba(14, 1, 26, 0.4);
+/*    border: #6d1f09 solid 2px; */
 
 }
 
@@ -199,8 +206,11 @@ body {
     padding-top: 10px;
     height: auto;
     border-radius: 10px;
-    border: #6d1f09 solid 2px;
-
+    background: #000;
+    background: rgba(14, 1, 26, 0.4);
+    color: #cfa67c;
+/*    border: #6d1f0a solid 2px; */
+    
 }
 
 .map-area {
@@ -209,7 +219,12 @@ body {
     padding: 10px;
     height: 400px;
     border-radius: 10px;
-    border: #6d1f09 solid 2px;
+    background: #000;
+    background: rgba(14, 1, 26, 0.4);
+    color: #cfa67c;
+    clear: both;
+    
+/*    border: #6d1f09 solid 2px; */
 
 }
 
@@ -258,10 +273,11 @@ body {
 }
 /* Edit user profile button*/
 #userBtn    {
-    background: #6d1f09;
+    background: #6d1f09; 
     border: #3c2e27 1px solid;
-    margin-left: 80px;
+    margin-left: 8.5vw;
     margin-top: 20px;
+    opacity: 1.0;
 }
 /* Sign-out button */
 #sign-out-button {
@@ -270,7 +286,7 @@ body {
 }
 /* Favorite books hr tag */
 #faves  {
-    border-top: #6d1f09 2px solid;
+    border-top: #cfa67c 2px solid;
     margin-bottom: 20px;
 }
 /* Favorites title */
@@ -329,33 +345,57 @@ margin: auto;
 
 #titleScroll {
     overflow-y: scroll;
-    width: 148px;
+    width: 21vw;
     height: 200px;
     background: white;
     border-radius: 10px;
     border: #6d1f09 solid 2px;
     float: left;  
-    padding: 5px;
+    padding-left: 4.5vw;;
+    padding-top: 10px;
+    margin-top: 25px;
+    margin-left: 1.5vw;
+
 }
 /* Book details in search books area */
 #search-results {
     overflow-y: scroll;
-    width: 435px;
+    width: 33vw;
     height: 200px;
-    background: white;
-    border-radius: 10px;
+    background: white; 
     border: #6d1f09 solid 2px;
-    float: right;
+    float: left; 
     padding: 5px;
+    border-left: none;
+    margin-top: 25px;
+    margin-right: 20px;
+    
+}   
+/* User name in welcome nav span */
+#userID {
+    color: white;
+}
+/* Color for the word "Welcome" in nav span */
+#welcome    {
+    color: white;
+}
+/* Color for "!" in nav span */
+#exclamation    {
+    color: white;
+}
+/* Navigation bar */
+.navbar {
+    border: #6d1f09 solid 1px; 
+    background: #66CDAA; 
 }
 /* Book search title */
 #bookSearchTitle    {
-    padding-left: 25px;
+    padding-left: 2vw;
 }
 /* Edit profile button */
 #bookSearch {
-    margin-left: 20px;
-    width: 52vw;
+    margin-left: 2vw;
+    width: 54vw;
     border: #6d1f09 solid 1px;
 }
 /* Book search formatting */
@@ -368,5 +408,5 @@ margin: auto;
 }
 /* Map title */
 #mapTitle  {
-    margin-left: 15px;
+    margin-left: 1vw;
 }
