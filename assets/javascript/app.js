@@ -201,13 +201,18 @@ $(document).ready(function () {
         }
     }); // end the click
 
+
+
     /*
         Google Books API
         ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
     */
     // Functions
     function bookSearch(α) {
-        // TODO: confirm images append to correct location
+        /*
+            α => html form/button
+            β => returned google book api object
+        */
         α.preventDefault()
         $('#titleScroll').empty()
         α = $('#bookSearch').val()
@@ -219,18 +224,23 @@ $(document).ready(function () {
                 let γ = $('<div>').addClass('search-image').attr('data-id', β.items[i].id)
                 $('<img>').attr('src', imgURL).attr('data-id', β.items[i].id).appendTo(γ)
                 γ.appendTo($('#titleScroll'))
-
-
             }
         })
     }
-
-    function bookDetail() {
-        // TODO: append ω data to correct place
+    function bookDetail(α,id=false) {
+        /*
+            α => html div object
+            β => returned google book api object
+        */
         $('#search-results').empty()
-        let α = $(this).attr('data-id')
+        α = $(α).attr('data-id')
+        if (id === false) {
+            α = $(this).attr('data-id')
+        } else {
+           α = id
+        }
         let url = 'https://www.googleapis.com/books/v1/volumes/' + α
-        $.get(url).then(function (β) {
+        $.get(url).then(function(β) {
             /*
                 Parse out needed data from return value β and store in ω
                 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -247,7 +257,6 @@ $(document).ready(function () {
                 forSale: β.saleInfo,
                 image: β.volumeInfo.imageLinks.thumbnail,
             }
-
             /*
                 Create html objects from data in ω
                 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -255,19 +264,17 @@ $(document).ready(function () {
             // create image & favorite button
             let img = $('<img>').attr('src', ω.image).attr('data-id', α)
             let btn = $('<button>').addClass('btn btn-primary').attr('id', 'add-to-favorites').text('Add to Favorites')
-            // Image & button is img
-            img.append(btn)
-
+            btn.attr('data-id', α)
             // create info section
             let ttle = $('<div>').html('<strong>' + ω.title + '</strong>')
             let athr = $('<div>').text('Author: ' + ω.author)
-            if (ω.rating) {
-                ω.rating = ω.rating + '/5'
+            if (ω.rating) {                 // rating is book rating 'n' stars out of 5
+                ω.rating = ω.rating + '/5'  // & isn't returned if it doesn't exist
             } else {
                 ω.rating = 'None'
             }
             if (!ω.publisher || ω.publisher === undefined || ω.publisher === null) {
-                ω.publisher = 'No data available'
+                ω.publisher = 'No data available'   // publisher isn't returned if unknown
             }
             let rtng = $('<div>').text('Rating: ' + ω.rating)
             let pges = $('<div>').text('Pages: ' + ω.pages)
@@ -276,26 +283,27 @@ $(document).ready(function () {
             let link = $('<div>').html('<a href="' + ω.link + '">View on Google Play Books</a>')
             // info object is ttle
             ttle.append(athr, rtng, pges, pubr, pbdt, link)
-
-            // create row 1
+            /*
+                create row 1
+            */
             // col 2
             let detail = $('<div>').addClass('col')
             // detail is detail div within a column
             ttle.appendTo(detail)
-
             // col 1
             let image = $('<div>').addClass('col')
             img.appendTo(image)
+            btn.appendTo(image)
             // row 1
             let row1 = $('<div>').addClass('row')
             detail.appendTo(row1)
             image.prependTo(row1)
-
-            // create row 2
+            /*
+                create row 2
+            */
             let row2 = $('<div>').addClass('row book-description').html(ω.description)
             // append row 2 to row 1
             row1.append(row2)
-
             /*
                 Append description object to target
                 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
@@ -303,11 +311,51 @@ $(document).ready(function () {
             row1.appendTo($('#search-results'))
         })
     }
+    function pushToFavorites(α) {
+        /*
+            α => html button
+        */
+        α = $(α).attr('data-id')
+        database.ref('users').child(currentUser).child('favorites').push({id:α})
+        database.ref('favoriteBooks').child(α).push({id:currentUser})
+    }
+    function showFavorites(α) {
+        /*
+            α => returned list of favorite books
+            β => returned google book api object
+            γ => google book id returned from firebase
+            δ => div holding image
+        */
+        for (let i in α.val()) {
+            let γ = α.val()[i].id
+            let url = 'https://www.googleapis.com/books/v1/volumes?q=' + γ
+            let imgURL
+            $.get(url).then(function(β){
+                imgURL = β.volumeInfo.imageLinks.thumbnail
+            })
+            let δ = $('<div>').addClass('search-image').attr('data-id', γ)
+            $('<img>').attr('src', imgURL).attr('data-id', γ).appendTo(δ)
+            let btn = $('<button>').addClass('btn btn-primary').attr('id', 'remove-from-favorites').text('Remove')
+            btn.attr('data-id',γ)
+            let box = $('<div>').attr('data-id',γ)
+            box.append(δ,btn.appendTo($('<span>'))).appendTo($('#favebooks'))
+        }
+    }
+    function removeFavorite(α) {
+        /*
+            α => html button => google books id/key
+        */
+        α = $(α).attr('data-id')
+        database.ref('users').child(currentUser).child('favorites').child(α).delete()
+        database.ref('favoriteBooks').child(α).child(id).delete()
+    }
 
     // Listeners
-
     $(document).on('click', '.book-search-form', bookSearch)
     $(document).on('click', '.search-image', bookDetail)
+    $(document).on('click','#add-to-favorites',pushToFavorites)
+    $(document).on('click','#remove-from-favorites',removeFavorite)
+    database.ref('users').child(currentUser).child('favorites').on('value',showFavorites)
 
 
 

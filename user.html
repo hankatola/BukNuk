@@ -49,58 +49,59 @@
         <div class="col-lg-4 left-side">
            <div class="user-image">
                 <div class="image-here"><img src="assets/images/blank-user.png" id="blank-profile-pic"></div>
-                <form>
-                    <div class="form-group">
-                        
-    <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" id="userBtn" data-toggle="modal" data-target="#exampleModal">
+                    <form>
+                        <div class="form-group">
+
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" id="userBtn" data-toggle="modal" data-target="#exampleModal">
                                 Edit Profile
                             </button>
-                                </div>
-                            </form>
                         </div>
+                    </form>
+                </div>
 
-    <!-- Modal -->
+            <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
-                <div class="modal-content" id="modalBackground">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">BükNük Profile</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>
-                    <div class="modal-body">
+                    <div class="modal-content" id="modalBackground">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">BükNük Profile</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
                             <label for="chooseAProfilePic">Upload a Profile Picture!</label>
                             <input type="file" class="form-control-file" accept="image/*" id="chooseAProfilePic">
                             <br>
                             <!-- <input type="zipcode" class="form-control" id="exampleInputZipCode1" aria-describedby="zipCodeHelp" placeholder="Enter zip code"> -->
                             <br>
                             <input type="username" class="form-control" id="exampleInputUsername1" aria-describedby="usernameHelp" placeholder="Enter user name">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" id="closeBtn" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="changesBtn"data-dismiss="modal">Save changes</button>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" id="closeBtn" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="changesBtn"data-dismiss="modal">Save changes</button>
-                    </div>
-                </div>
                 </div>
             </div>
 
-    <!-- Favorites section -->
+            <!-- Favorites section -->
             <div class="favorites-area">
-                    <h2 id="faveTitle">My Favorite Books</h2>
-                    <hr id="faves">
-                    <div id="faveBooks"></div>
+                <h2 id="faveTitle">My Favorite Books</h2>
+                <hr id="faves">
+                <div id="faveBooks"></div>
             </div>
+
         </div>
 
-    <!-- Book search section -->
+        <!-- Book search section -->
         <div class="col-lg-8 right-side">
             <div class="search-area">
                 <form>
                     <div class="form-group">
                         <label for="bookSearch">
-                            <h2 id="bookSearchTitle">Search for Books</h2>
+                        <h2 id="bookSearchTitle">Search for Books</h2>
                         </label>
                         <input type="text" class="form-control book-search-form" id="bookSearch" placeholder="Title/Author etc">
                     </div>
@@ -120,10 +121,9 @@
                 <br>
             </div>
 
-    <!-- Bukworms in your area section -->
+            <!-- Bukworms in your area section -->
             <div class="map-area">
                 <h2 id="mapTitle">Bükwürms in your area:</h2>
-                
                 <div class="container">
                     <div id="mapid"></div>
                 </div>
