@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,49 +19,47 @@
     <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-   </head>
-   
-   <body>
-            <div class="flex-grid">
-                    <div class="col" id="left"><button type="button" class="btn">Sign Up</button></div>
-                    <div class="col" id="title">BükNük</div>
-                    <div class="col" id="right"><button type="button" class="btn">Sign In</button></div>
+</head>
+
+<body>
+    <div class="flex-grid">
+            <div class="col" id="left"><button type="button" class="btn">Sign Up</button></div>
+            <div class="col" id="title">BükNük</div>
+            <div class="col" id="right"><button type="button" class="btn">Sign In</button></div>
+    </div>
+    <div class="row">
+        <div class=".col-md-12">
+            <div class="signin" id="loginBox">
+                <h1>Sign In</h1>
+                <form>
+                    <p>Username</p>
+                    <input type="text" id="signinEmail" name="" placeholder="Enter Email">
+                    <p>Password</p>
+                    <input type="password" id="signinPassword" name="" placeholder="Enter Password">
+                    <input type="submit" id="signinSubmit" name="" value="Login">
+                </form>
             </div>
-           <div class="row">
-               <div class=".col-md-12">
-                    <div class="signin" id="loginBox">
-                        <h1>Sign In</h1>
-                        <form>
-                            <p>Username</p>
-
-                                <input type="text" id="signinEmail" name="" placeholder="Enter Email">
-                            <p>Password</p>
-                                <input type="password" id="signinPassword" name="" placeholder="Enter Password">
-                                <input type="submit" id="signinSubmit" name="" value="Login">
-                               
-
-                        </form>
-                    </div>
+        </div>
+    </div>
+        <div class="row">
+            <div class=".col-md-12">
+                <div class="signin" id="registerBox">
+                    <h1>Create Account</h1>
+                    <form>
+                        <p>Email</p>
+                        <input type="text" id ="signupEmail" name="" placeholder="Enter Email">
+                        <p>Password</p>
+                        <input type="password" id="signupPassword" name="" placeholder="Create a Password">
+                        <input type="submit" id="signupSubmit" name="" value="Login">
+                    </form>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div class="row">
-                <div class=".col-md-12">
-                     <div class="signin" id="registerBox">
-                         <h1>Create Account</h1>
-                         <form>
-                             <p>Email</p>
-                                 <input type="text" id ="signupEmail" name="" placeholder="Enter Email">
-                             <p>Password</p>
-                                 <input type="password" id="signupPassword" name="" placeholder="Create a Password">
-                                 <input type="submit" id="signupSubmit" name="" value="Login">
-                         </form>
-                     </div>
-                 </div>
-             </div>
     <!-- JavaScript -->
     <script src="assets/javascript/app.js"></script>
-    
-   </body>
 
-   </html>
+</body>
+
+</html>
