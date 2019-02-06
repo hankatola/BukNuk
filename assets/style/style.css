@@ -141,6 +141,23 @@ body {
     color: #3c2e27;
 }
 
+#userBtn:hover {
+    cursor: pointer;
+    background: #6d1f09;
+    color: #3c2e27;
+}
+
+#submitBtn:hover {
+    cursor: pointer;
+    background: #6d1f09;
+    color: #3c2e27;
+}
+
+#sign-out-button:hover {
+    cursor: pointer;
+    background: #6d1f09;
+    color: #3c2e27;
+}
 #title {
     color: white;
     text-align: center;
@@ -404,7 +421,8 @@ margin: auto;
     padding-bottom: 5px;
 }
 .book-description {
-    padding: 5px;
+    padding: 10px;
+    margin: 10px;
 }
 /* Map title */
 #mapTitle  {
