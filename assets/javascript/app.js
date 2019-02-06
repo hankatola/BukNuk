@@ -141,6 +141,7 @@ $(document).ready(function () {
         console.log(thisUser.username);
         var name = thisUser.username;
         $("#userID").text(name);
+        showFavorites(snapshot)
     });
 
 
@@ -315,9 +316,9 @@ $(document).ready(function () {
         /*
             α => html button
         */
-        α = $(α).attr('data-id')
-        database.ref('users').child(currentUser).child('favorites').push({id:α})
-        database.ref('favoriteBooks').child(α).push({id:currentUser})
+        α = $(this).attr('data-id')
+        database.ref('users/' + currentUser + '/favorites/').child(α).set(α)
+        database.ref('favoriteBooks').child(α).child(currentUser).set(currentUserLocation)
     }
     function showFavorites(α) {
         /*
@@ -326,36 +327,47 @@ $(document).ready(function () {
             γ => google book id returned from firebase
             δ => div holding image
         */
-        for (let i in α.val()) {
-            let γ = α.val()[i].id
+       $('#faveBooks').empty()
+        α = α.val()[currentUser].favorites
+        for (let i in α) {
+            let γ = α[i]
+            // console.log(γ)
             let url = 'https://www.googleapis.com/books/v1/volumes?q=' + γ
             let imgURL
             $.get(url).then(function(β){
-                imgURL = β.volumeInfo.imageLinks.thumbnail
+                imgURL = β.items[0].volumeInfo.imageLinks.thumbnail
+                let div = $('<div>').addClass('search-image').attr('data-id', γ)
+                let img = $('<img>').attr('src', imgURL).attr('data-id', γ)
+                let btn = $('<button>').addClass('btn btn-primary remove-from-favorites').text('Remove')
+                btn.attr('data-id',γ)
+                img.appendTo(div)
+                btn.appendTo(div)
+                let box = $('<div>').attr('data-id',γ)
+                div.appendTo(box)
+                div.appendTo($('#faveBooks'))
             })
-            let δ = $('<div>').addClass('search-image').attr('data-id', γ)
-            $('<img>').attr('src', imgURL).attr('data-id', γ).appendTo(δ)
-            let btn = $('<button>').addClass('btn btn-primary').attr('id', 'remove-from-favorites').text('Remove')
-            btn.attr('data-id',γ)
-            let box = $('<div>').attr('data-id',γ)
-            box.append(δ,btn.appendTo($('<span>'))).appendTo($('#favebooks'))
         }
     }
     function removeFavorite(α) {
         /*
             α => html button => google books id/key
         */
-        α = $(α).attr('data-id')
-        database.ref('users').child(currentUser).child('favorites').child(α).delete()
-        database.ref('favoriteBooks').child(α).child(id).delete()
+        α = $(this).attr('data-id')
+        database.ref('users/' + currentUser + '/favorites/' + α).once('value').then(function(x){
+            console.log(x.val())
+            database.ref('users/' + currentUser + '/favorites/' + α).remove()
+        })
+        $('#search-results').empty()
     }
 
     // Listeners
     $(document).on('click', '.book-search-form', bookSearch)
     $(document).on('click', '.search-image', bookDetail)
     $(document).on('click','#add-to-favorites',pushToFavorites)
-    $(document).on('click','#remove-from-favorites',removeFavorite)
-    database.ref('users').child(currentUser).child('favorites').on('value',showFavorites)
+    $(document).on('click','.remove-from-favorites',removeFavorite)
+    // database.ref().child('users').child(currentUser).child('favorites').on('value',function(x){
+    //     console.log('fired')
+    // })
 
 
 
