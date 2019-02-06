@@ -32,7 +32,9 @@
     <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/javascript/map.js"></script>
-
+    <!--simplebar-->
+    <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css" />
+<script src="https://unpkg.com/simplebar@latest/dist/simplebar.js"></script>
     <title>BükNük User Page</title>
 </head>
 
@@ -90,7 +92,7 @@
             <div class="favorites-area">
                 <h2 id="faveTitle">My Favorite Books</h2>
                 <hr id="faves">
-                <div id="faveBooks"></div>
+                <div data-simplebar id="faveBooks"></div>
             </div>
 
         </div>
@@ -110,7 +112,7 @@
                 <div class="container">
                     <div class = 'row'> 
 <!--                        <div class='col'>  -->
-                            <div id="titleScroll"></div>
+                            <div data-simplebar id="titleScroll"></div>
 <!--                        </div> --> 
 <!--                        <div class='col'> -->
                             <div id="search-results"></div>

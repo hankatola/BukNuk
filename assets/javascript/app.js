@@ -54,7 +54,10 @@ $(document).ready(function () {
                             location: currentUserLocation,
                             favoriteBooks: []
                         });
-
+                        firebase.database().ref('location/'+ user.user.uid).set({
+                          location: currentUserLocation
+                          
+                        });
                     }, function(error) {
                         var errorCode = error.code;
                         var errorMessage = error.message;
@@ -315,9 +318,11 @@ $(document).ready(function () {
         /*
             α => html button
         */
-        α = $(α).attr('data-id')
-        database.ref('users').child(currentUser).child('favorites').push({id:α})
-        database.ref('favoriteBooks').child(α).push({id:currentUser})
+        α = $(this).attr('data-id')
+        console.log(α)
+        database.ref('users/'+currentUser+'/favorites').update({
+            test:α});
+        database.ref('favoriteBooks'/+α).push({id:currentUser})
     }
     function showFavorites(α) {
         /*
@@ -355,7 +360,74 @@ $(document).ready(function () {
     $(document).on('click', '.search-image', bookDetail)
     $(document).on('click','#add-to-favorites',pushToFavorites)
     $(document).on('click','#remove-from-favorites',removeFavorite)
-    database.ref('users').child(currentUser).child('favorites').on('value',showFavorites)
+    
+
+
+    //location stuff//-----------------------------------
+
+    function addMarker(map, latLong, tooltipText){
+
+        if(typeof tooltipText === "string" && tooltipText.length > 0){
+            return L.marker(latLong).bindTooltip(tooltipText).addTo(map);
+        }
+        else{
+            return L.marker(latLong).addTo(map);
+        }
+        
+    }
+    
+    // If we can't get the user's location, set the class location as the default
+    function useDefaultLocation(err){
+    
+        console.log(err) // Log why we couldn't get the user's location
+    
+        // Near 1500 RDU Center Drive
+        var defaultPosition = {
+            coords: {
+                latitude: 35.851579,
+                longitude: -78.795865
+            }
+        }
+    
+        // Populate the map using the default location
+        populateMap(defaultPosition)
+    }
+    
+    // This function populates the map given a target position
+    function populateMap(position){
+        
+        // Get the latitude/longitude out of the provided position object
+        var latLong = [position.coords.latitude, position.coords.longitude]
+       
+        // Bind map to "mapid" div
+        var mymap = L.map('mapid').setView(latLong, 9);
+    
+        // Add marker showing current location
+        addMarker(mymap, latLong, "My Location")
+    
+        // Use the Leaflet library to hit the Mapbox API to get back a map, centered where the user currently is
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox.streets',
+            accessToken: 'pk.eyJ1IjoibmFucGluY3VzIiwiYSI6ImNqcm1xc3FiNTBtYW0zeW10dTcwdG44ZHoifQ.jruD3sCdhUgBrNIFXVUJVA'
+        }).addTo(mymap);
+    }
+     // Use the HTML5 built-in get location function to return the user's current location
+    navigator.geolocation.getCurrentPosition(populateMap, useDefaultLocation);
+
+database.ref("location/").on("value", function (snapshot) {
+    snapshot.forEach(function(childSnapshot){
+ var value= childSnapshot.val().location.coords;
+ console.log(value);
+
+    })
+    
+})
+
+
+
+
 
 
 

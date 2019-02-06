@@ -296,7 +296,7 @@ body {
 
 /* Favorite books section */
 #faveBooks  {
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     width: 295px;
     height: 270px;
     background: white;
