@@ -165,7 +165,7 @@ body {
     border-radius: 10px;
     background: #000;
     background: rgba(14, 1, 26, 0.4);
-    height: 46vh;
+    height: 450px
 /*    border: #6d1f09 solid 2px; */
     
 }
@@ -176,7 +176,7 @@ body {
     background-color: #66CDAA;
     justify-content: center;
     margin-left: 5vw;
-    margin-top: 1vh;
+    margin-top: 5vh;
     border-radius: 10px;
 }
 
@@ -191,7 +191,7 @@ body {
     margin: 10px;
     background-color: #eee4d0;
     padding: 10px;
-    height: 400px;
+    height: 450px;
     border-radius: 10px;
     color: #cfa67c;
     background: #000;
@@ -204,7 +204,7 @@ body {
     margin: 10px;
     background-color: #eee4d0;
     padding-top: 10px;
-    height: auto;
+    height: 450px;
     border-radius: 10px;
     background: #000;
     background: rgba(14, 1, 26, 0.4);
@@ -217,7 +217,7 @@ body {
     margin: 10px;
     background-color: #eee4d0;
     padding: 10px;
-    height: 400px;
+    height: 450px;
     border-radius: 10px;
     background: #000;
     background: rgba(14, 1, 26, 0.4);
@@ -247,7 +247,8 @@ body {
 }
 /* Submit button in search area div */
 #submitBtn  {
-    background: #6d1f09;
+    background: #66CDAA;
+    color: #eee4d0;
     border: #3c2e27 2px solid;
     margin-left: 25px;
     margin-top: 5px;
@@ -268,12 +269,12 @@ body {
 }
 /* Save changes button in modal */
 #changesBtn {
-    background: #6d1f09;
+    background: #66CDAA;
     border: #3c2e27 1px solid;
 }
 /* Edit user profile button*/
 #userBtn    {
-    background: #6d1f09; 
+    background: #66CDAA; 
     border: #3c2e27 1px solid;
     margin-left: 8.5vw;
     margin-top: 20px;
@@ -281,17 +282,24 @@ body {
 }
 /* Sign-out button */
 #sign-out-button {
-    background: #3c2e27;
-    color: white;
+    background: #66CDAA;
+    color: #eee4d0;
 }
 /* Favorite books hr tag */
 #faves  {
     border-top: #cfa67c 2px solid;
     margin-bottom: 20px;
 }
+/* User profile hr tag */
+#profile  {
+    border-top: #cfa67c 2px solid;
+    padding-bottom: 3.5vh;
+    margin-bottom: 20px;
+}
 /* Favorites title */
 #faveTitle {
     text-align: center;
+    color: #cfa67c;
 }
 
 /* Favorite books section */
@@ -346,7 +354,7 @@ margin: auto;
 #titleScroll {
     overflow-y: scroll;
     width: 21vw;
-    height: 200px;
+    height: 35vh;
     background: white;
     border-radius: 10px;
     border: #6d1f09 solid 2px;
@@ -361,7 +369,7 @@ margin: auto;
 #search-results {
     overflow-y: scroll;
     width: 33vw;
-    height: 200px;
+    height: 35vh;
     background: white; 
     border: #6d1f09 solid 2px;
     float: left; 
@@ -373,21 +381,17 @@ margin: auto;
 }   
 /* User name in welcome nav span */
 #userID {
-    color: white;
+    color: #eee4d0;
 }
 /* Color for the word "Welcome" in nav span */
 #welcome    {
-    color: white;
+    color: #eee4d0;
 }
 /* Color for "!" in nav span */
 #exclamation    {
-    color: white;
+    color: #eee4d0;
 }
-/* Navigation bar */
-.navbar {
-    border: #6d1f09 solid 1px; 
-    background: #66CDAA; 
-}
+
 /* Book search title */
 #bookSearchTitle    {
     padding-left: 2vw;
