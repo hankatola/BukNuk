@@ -226,7 +226,7 @@ $(document).ready(function () {
             for (let i in β.items) {
                 let imgURL = β.items[i].volumeInfo.imageLinks.thumbnail
                 let γ = $('<div>').addClass('search-image').attr('data-id', β.items[i].id)
-                $('<img>').attr('src', imgURL).attr('data-id', β.items[i].id).appendTo(γ)
+                $('<img>').attr('src', imgURL).attr('data-id', β.items[i].id).appendTo(γ).css('height','190px').css('width','128px')
                 γ.appendTo($('#titleScroll'))
             }
         })
@@ -267,8 +267,10 @@ $(document).ready(function () {
             */
             // create image & favorite button
             let img = $('<img>').attr('src', ω.image).attr('data-id', α)
-            let btn = $('<button>').addClass('btn btn-primary').attr('id', 'add-to-favorites').text('Add to Favorites')
-            btn.attr('data-id', α)
+            img.css('height','190px').css('width','128px')
+            let btn = $('<i>').addClass('fas fa-plus-circle').attr('id', 'add-to-favorites')//.text('Add to Favorites')
+            btn.attr('data-id', α).css('font-size','24px')
+            btn.css('position','relative').css('bottom','-80px').css('right','30px')
             // create info section
             let ttle = $('<div>').html('<strong>' + ω.title + '</strong>')
             let athr = $('<div>').text('Author: ' + ω.author)
@@ -336,15 +338,16 @@ $(document).ready(function () {
         α = α.val()[currentUser].favorites
         for (let i in α) {
             let γ = α[i]
-            console.log(γ)
             let url = 'https://www.googleapis.com/books/v1/volumes?q=' + γ
             let imgURL
             $.get(url).then(function(β){
                 imgURL = β.items[0].volumeInfo.imageLinks.thumbnail
                 let div = $('<div>').attr('data-id', γ)
                 let img = $('<img>').attr('src', imgURL).attr('data-id', γ).addClass('search-image')
-                let btn = $('<button>').addClass('btn btn-primary remove-from-favorites').text('Remove')
-                btn.attr('data-id',γ)
+                img.css('height','190px').css('width','128px')
+                let btn = $('<i>').addClass('fas fa-minus-circle remove-from-favorites')
+                btn.attr('data-id',γ).css('font-size','24px')
+                btn.css('position','relative').css('bottom','-75px').css('right','30px')
                 img.appendTo(div)
                 btn.appendTo(div)
                 let box = $('<div>').attr('data-id',γ)
