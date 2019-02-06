@@ -421,6 +421,7 @@ margin: auto;
     margin-left: 2vw;
     width: 54vw;
     border: #6d1f09 solid 1px;
+    background: #eee4d0;
 }
 /* Book search formatting */
 .search-image {

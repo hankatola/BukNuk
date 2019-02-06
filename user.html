@@ -14,64 +14,67 @@
     <!-- Emojis -->
     <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
 
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
-   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-   crossorigin=""/>
+     
+    <!-- Leaflet CSS -->
+        
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"    integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+           crossorigin="" />
 
-   <link href="assets/style/map.css" rel="stylesheet">
+       
+    <link href="assets/style/map.css" rel="stylesheet">
 
-   <!-- Leaflet JS library -->
-    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
-    integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-    crossorigin=""></script>
+       
+    <!-- Leaflet JS library -->
+        <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"     integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+            crossorigin=""></script>
 
-    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="assets/javascript/map.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="assets/javascript/map.js"></script>
     <!--simplebar-->
     <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css" />
-<script src="https://unpkg.com/simplebar@latest/dist/simplebar.js"></script>
+    <script src="https://unpkg.com/simplebar@latest/dist/simplebar.js"></script>
     <title>BükNük User Page</title>
 </head>
 
 <body>
     <!-- Navigation bar -->
-    <nav class="navbar navbar-light bg-*turquoise id="navigation">
+    <nav class="navbar navbar-light bg-*turquoise id=" navigation">
         <span id="welcome">Welcome <span id="userID">(username here)</span id="exclamation">!</span>
-        <button type ="button" class="btn navbar-light" id="sign-out-button">Sign Out</button>
+        <button type="button" class="btn navbar-light" id="sign-out-button">Sign Out</button>
         </a>
     </nav>
 
     <!-- User profile image section -->
     <div class="container">
         <div class="col-lg-4 left-side">
-           <div class="user-image">
+            <div class="user-image">
                 <h2 id="faveTitle">User Profile</h2>
-                    <hr id="profile">
+                <hr id="profile">
                 <div class="image-here"><img src="assets/images/blank-user.png" id="blank-profile-pic"></div>
-                    <form>
-                        <div class="form-group">
+                <form>
+                    <div class="form-group">
 
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" id="userBtn" data-toggle="modal" data-target="#exampleModal">
-                                Edit Profile
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" id="userBtn" data-toggle="modal" data-target="#exampleModal">
+                            Edit Profile
+                        </button>
+                    </div>
+                </form>
+            </div>
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content" id="modalBackground">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">BükNük Profile</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                                <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
@@ -80,11 +83,13 @@
                             <br>
                             <!-- <input type="zipcode" class="form-control" id="exampleInputZipCode1" aria-describedby="zipCodeHelp" placeholder="Enter zip code"> -->
                             <br>
-                            <input type="username" class="form-control" id="exampleInputUsername1" aria-describedby="usernameHelp" placeholder="Enter user name">
+                            <input type="username" class="form-control" id="exampleInputUsername1" aria-describedby="usernameHelp"
+                                placeholder="Enter user name">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" id="closeBtn" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" id="changesBtn"data-dismiss="modal">Save changes</button>
+                            <button type="button" class="btn btn-primary" id="changesBtn" data-dismiss="modal">Save
+                                changes</button>
                         </div>
                     </div>
                 </div>
@@ -101,6 +106,17 @@
 
         <!-- Book search section -->
         <div class="col-lg-8 right-side">
+
+
+            <!-- Bukworms in your area section -->
+            <div class="map-area">
+                <h2 id="mapTitle">Bükwürms in your area:</h2>
+                <hr id="faves">
+                <div class="container">
+                    <div id="mapid"></div>
+                </div>
+            </div>
+
             <div class="search-area">
                 <h2 id="bookSearchTitle">Search for Books</h2>
                 <hr id="faves">
@@ -113,26 +129,17 @@
                     <button type="submit" class="btn btn-primary book-search-form" id="submitBtn">Submit</button>
                 </form>
                 <div class="container">
-                    <div class = 'row'> 
-<!--                        <div class='col'>  -->
-                            <div data-simplebar id="titleScroll"></div>
-<!--                        </div> --> 
-<!--                        <div class='col'> -->
-                            <div id="search-results"></div>
-<!--                        </div> -->
+                    <div class='row'>
+                        <!--                        <div class='col'>  -->
+                        <div data-simplebar id="titleScroll"></div>
+                        <!--                        </div> -->
+                        <!--                        <div class='col'> -->
+                        <div id="search-results"></div>
+                        <!--                        </div> -->
                     </div>
-                <br>
+                    <br>
                 </div>
                 <br>
-            </div>
-
-            <!-- Bukworms in your area section -->
-            <div class="map-area">
-                <h2 id="mapTitle">Bükwürms in your area:</h2>
-                <hr id="faves">
-                <div class="container">
-                    <div id="mapid"></div>
-                </div>
             </div>
         </div>
 
@@ -140,11 +147,14 @@
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
     <!-- Ajax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
     <!-- Bootstrap -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
     <!-- Ajax-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Javascript -->
