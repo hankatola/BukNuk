@@ -56,7 +56,6 @@ $(document).ready(function () {
                         });
                         firebase.database().ref('location/'+ user.user.uid).set({
                           location: currentUserLocation
-                          
                         });
                     }, function(error) {
                         var errorCode = error.code;
@@ -145,6 +144,7 @@ $(document).ready(function () {
         var name = thisUser.username;
         $("#userID").text(name);
         $("#faveTitle").text(name);
+        showFavorites(snapshot)
     });
 
 
@@ -336,20 +336,20 @@ $(document).ready(function () {
         α = α.val()[currentUser].favorites
         for (let i in α) {
             let γ = α[i]
-            // console.log(γ)
+            console.log(γ)
             let url = 'https://www.googleapis.com/books/v1/volumes?q=' + γ
             let imgURL
             $.get(url).then(function(β){
                 imgURL = β.items[0].volumeInfo.imageLinks.thumbnail
-                let div = $('<div>').addClass('search-image').attr('data-id', γ)
-                let img = $('<img>').attr('src', imgURL).attr('data-id', γ)
+                let div = $('<div>').attr('data-id', γ)
+                let img = $('<img>').attr('src', imgURL).attr('data-id', γ).addClass('search-image')
                 let btn = $('<button>').addClass('btn btn-primary remove-from-favorites').text('Remove')
                 btn.attr('data-id',γ)
                 img.appendTo(div)
                 btn.appendTo(div)
                 let box = $('<div>').attr('data-id',γ)
                 div.appendTo(box)
-                div.appendTo($('#faveBooks'))
+                box.appendTo($('#faveBooks'))
             })
         }
     }
@@ -371,10 +371,13 @@ $(document).ready(function () {
     $(document).on('click','#add-to-favorites',pushToFavorites)
     $(document).on('click','.remove-from-favorites',removeFavorite)
 
-    
 
 
-    //location stuff//-----------------------------------
+
+    /*
+        Location Stuff
+        ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+    */
 
     function addMarker(map, latLong, tooltipText){
 
@@ -384,14 +387,14 @@ $(document).ready(function () {
         else{
             return L.marker(latLong).addTo(map);
         }
-        
+
     }
-    
+
     // If we can't get the user's location, set the class location as the default
     function useDefaultLocation(err){
-    
+
         console.log(err) // Log why we couldn't get the user's location
-    
+
         // Near 1500 RDU Center Drive
         var defaultPosition = {
             coords: {
@@ -399,23 +402,23 @@ $(document).ready(function () {
                 longitude: -78.795865
             }
         }
-    
+
         // Populate the map using the default location
         populateMap(defaultPosition)
     }
-    
+
     // This function populates the map given a target position
     function populateMap(position){
-        
+
         // Get the latitude/longitude out of the provided position object
         var latLong = [position.coords.latitude, position.coords.longitude]
-       
+
         // Bind map to "mapid" div
         var mymap = L.map('mapid').setView(latLong, 9);
-    
+
         // Add marker showing current location
         addMarker(mymap, latLong, "My Location")
-    
+
         // Use the Leaflet library to hit the Mapbox API to get back a map, centered where the user currently is
         L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -427,14 +430,12 @@ $(document).ready(function () {
      // Use the HTML5 built-in get location function to return the user's current location
     navigator.geolocation.getCurrentPosition(populateMap, useDefaultLocation);
 
-database.ref("location/").on("value", function (snapshot) {
-    snapshot.forEach(function(childSnapshot){
- var value= childSnapshot.val().location.coords;
- console.log(value);
-
+    database.ref("location/").on("value", function (snapshot) {
+        snapshot.forEach(function(childSnapshot){
+        var value= childSnapshot.val().location.coords;
+        console.log(value);
+        })
     })
-    
-})
 
 
 
