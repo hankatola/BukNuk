@@ -141,6 +141,7 @@ $(document).ready(function () {
         console.log(thisUser.username);
         var name = thisUser.username;
         $("#userID").text(name);
+        $("#faveTitle").text(name);
     });
 
 
@@ -356,7 +357,6 @@ $(document).ready(function () {
     $(document).on('click','#add-to-favorites',pushToFavorites)
     $(document).on('click','#remove-from-favorites',removeFavorite)
     database.ref('users').child(currentUser).child('favorites').on('value',showFavorites)
-
 
 
     //document on ready closing tab//

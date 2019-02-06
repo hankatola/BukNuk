@@ -201,7 +201,7 @@ body {
     width: 200px;
     height: 200px;
     border: #6d1f09 solid 1px;
-
+    border-radius: 5px;
 }
 
 .favorites-area {
@@ -330,7 +330,8 @@ body {
     float: left;  
     padding: 5px;
     margin-left: 1vw;
-    margin-top: 1vh
+    margin-top: 1vh;
+    background: rgba(14, 1, 26, 0.4);
 }
 /* Search results in search books area */
 
@@ -380,6 +381,7 @@ margin: auto;
     padding-top: 10px;
     margin-top: 25px;
     margin-left: 1.5vw;
+    background: rgba(14, 1, 26, 0.4);
 
 }
 /* Book details in search books area */
@@ -394,6 +396,7 @@ margin: auto;
     border-left: none;
     margin-top: 25px;
     margin-right: 20px;
+    background: rgba(14, 1, 26, 0.4);
     
 }   
 /* User name in welcome nav span */
