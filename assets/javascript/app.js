@@ -444,6 +444,20 @@ $(document).ready(function () {
      // Use the HTML5 built-in get location function to return the user's current location
     navigator.geolocation.getCurrentPosition(populateMap, useDefaultLocation);
 
+<<<<<<< HEAD
+=======
+    database.ref("location/").on("value", function (snapshot) {
+        snapshot.forEach(function(childSnapshot){
+        var value= childSnapshot.val().location;
+        console.log(value);
+        })
+    })
+
+
+
+
+
+>>>>>>> master
 
     //document on ready closing tab//
 });

@@ -208,11 +208,12 @@ body {
     margin: 10px;
     background-color: #eee4d0;
     padding: 10px;
-    height: 450px;
+    min-height: 450px;
     border-radius: 10px;
     color: #cfa67c;
     background: #000;
     background: rgba(14, 1, 26, 0.4);
+    overflow:hidden;
 /*    border: #6d1f09 solid 2px; */
 
 }
@@ -221,11 +222,12 @@ body {
     margin: 10px;
     background-color: #eee4d0;
     padding-top: 10px;
-    height: 450px;
+    min-height: 450px;
     border-radius: 10px;
     background: #000;
     background: rgba(14, 1, 26, 0.4);
     color: #cfa67c;
+    overflow:hidden;
 /*    border: #6d1f0a solid 2px; */
     
 }
@@ -317,13 +319,14 @@ body {
 #faveTitle {
     text-align: center;
     color: #cfa67c;
+    
 }
 
 /* Favorite books section */
 #faveBooks  {
     /* overflow-y: scroll; */
     width: 295px;
-    height: 270px;
+    min-height: 270px;
     background: white;
     border-radius: 10px;
     border: #6d1f09 solid 2px;
@@ -332,6 +335,8 @@ body {
     margin-left: 1vw;
     margin-top: 1vh;
     background: rgba(14, 1, 26, 0.4);
+    overflow:hidden;
+
 }
 /* Search results in search books area */
 
@@ -370,9 +375,9 @@ margin: auto;
 /* Title scroll bar in search books area */
 
 #titleScroll {
-    overflow-y: scroll;
+    overflow: hidden;
     width: 21vw;
-    height: 35vh;
+    min-height: 35vh;
     background: white;
     border-radius: 10px;
     border: #6d1f09 solid 2px;
@@ -386,9 +391,9 @@ margin: auto;
 }
 /* Book details in search books area */
 #search-results {
-    overflow-y: scroll;
+    overflow: hidden;
     width: 33vw;
-    height: 35vh;
+    min-height: 35vh;
     background: white; 
     border: #6d1f09 solid 2px;
     float: left; 
