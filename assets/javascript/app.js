@@ -435,7 +435,7 @@ $(document).ready(function () {
 
     database.ref("location/").on("value", function (snapshot) {
         snapshot.forEach(function(childSnapshot){
-        var value= childSnapshot.val().location.coords;
+        var value= childSnapshot.val().location;
         console.log(value);
         })
     })
