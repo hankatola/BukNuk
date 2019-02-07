@@ -168,7 +168,7 @@ $(document).ready(function () {
             }
 
         } else {
-            
+
         }
 
     });
@@ -367,12 +367,43 @@ $(document).ready(function () {
         })
         $('#search-results').empty()
     }
+    function pushChat(α) {
+        α.preventDefault()
+        let message = $('#chat-message').val().trim()
+        $('#chat-message').val('')
+        database.ref('chat').push({
+            user:thisUser.username,
+            message:message,
+            time:firebase.database.ServerValue.TIMESTAMP
+        })
+    }
+    function showChat(α) {
+        let user = $('<strong>').text(α.val().user).addClass('text-gray-dark')
+        let time = α.val().time
+        time = moment(time).format('MMM D, YYYY h:mm a')
+        let t = $('<span>').text(time)
+        let text = $('<span>').text(α.val().message)
+        let a = $('<div>').addClass('d-flex justify-content-between align-items-center w-100')
+        let b = $('<div>').addClass('media-body pb-3 mb-0 small lh-125 border-bottom border-gray')
+        let c = $('<div>').addClass('media text-muted pt-3')
+        a.append(user)
+        a.append(t)
+        a.appendTo(b)
+        b.append(text)
+        b.appendTo(c)
+        let cw = $('#chatId')
+        cw.append(c)
+        var height = cw[0].scrollHeight
+        cw.scrollTop(height)
+    }
 
     // Listeners
     $(document).on('click', '.book-search-form', bookSearch)
     $(document).on('click', '.search-image', bookDetail)
     $(document).on('click','#add-to-favorites',pushToFavorites)
     $(document).on('click','.remove-from-favorites',removeFavorite)
+    $(document).on('click','#chat-button',pushChat)
+    database.ref('chat').on('child_added',showChat)
 
 
 
@@ -428,10 +459,9 @@ $(document).ready(function () {
                 var value= childSnapshot.val().location.coords;
 
                 addMarker(mymap, [value.latitude, value.longitude], "Location of another Bükwürm")
-                
             })
         })
-    
+
 
         // Use the Leaflet library to hit the Mapbox API to get back a map, centered where the user currently is
         L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {

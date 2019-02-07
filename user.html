@@ -25,15 +25,15 @@
 
        
     <!-- Leaflet JS library -->
-        <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"     integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-            crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"     integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+        crossorigin=""></script>
 
-        <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-database.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="assets/javascript/map.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/javascript/map.js"></script>
     <!--simplebar-->
     <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css" />
     <script src="https://unpkg.com/simplebar@latest/dist/simplebar.js"></script>
@@ -118,18 +118,16 @@
                             <div id="mapid"></div>
                         </div>
                     </div>
+                    <!-- Chat section -->
                     <div class="col-lg-6">
                         <h2 id="mapTitle">Chat:</h2>
                         <hr id="faves">
                         <div class="container">
                             <div id="chatId"></div>
                             <form action="#" method="GET">
-                                    <input class='inputUserName' name='Msg' type='text' placeholder='Enter your message...'>
-                                    <input type="submit">
-                                    <code>
-                                       
-                                    </code>
-                                </form>
+                                <input class='inputUserName' name='Msg' type='text' id='chat-message' placeholder='Enter your message...'>
+                                <input type="submit" id='chat-button'>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -165,6 +163,8 @@
         </div>
 
     </div>
+    <!-- Moment JS -->
+    <script src='https://momentjs.com/downloads/moment-with-locales.min.js'></script>
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
     <!-- jQuery -->
