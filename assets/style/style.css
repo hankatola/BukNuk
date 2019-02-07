@@ -445,3 +445,12 @@ margin: auto;
 #mapTitle  {
     margin-left: 1vw;
 }
+
+/* Chat text area */
+#txtarea {
+    border: 1px solid #f0f040; 
+    background-color: #fffff0; 
+    width: 100%; 
+    padding: 4px; 
+    margin: 5px; 
+}
