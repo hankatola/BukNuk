@@ -86,6 +86,9 @@ $(document).ready(function () {
                     var errorMessage = error.message;
                     console.log(errorCode, errorMessage)
                   });
+                  firebase.database().ref('location/'+ user.user.uid).set({
+                    location: currentUserLocation
+                  });
             })
             .catch(function (error) {
                 var errorCode = error.code;
