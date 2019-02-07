@@ -402,8 +402,17 @@ margin: auto;
     margin-top: 25px;
     margin-right: 20px;
     background: rgba(14, 1, 26, 0.4);
-    
 }   
+
+#chatId {
+    width: 33vw;
+    height: 35vh;
+    width: 33vw;
+    height: 35vh;
+    border: #6d1f09 solid 2px;
+    background: rgba(14, 1, 26, 0.4);
+}
+
 /* User name in welcome nav span */
 #userID {
     color: #eee4d0;
@@ -440,4 +449,13 @@ margin: auto;
 /* Map title */
 #mapTitle  {
     margin-left: 1vw;
+}
+
+/* Chat text area */
+#txtarea {
+    border: 1px solid #f0f040; 
+    background-color: #fffff0; 
+    width: 100%; 
+    padding: 4px; 
+    margin: 5px; 
 }
