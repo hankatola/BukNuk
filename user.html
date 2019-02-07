@@ -14,7 +14,8 @@
     <!-- Emojis -->
     <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
     <!-- Favorite icons -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+        crossorigin="anonymous">
      
     <!-- Leaflet CSS -->
         
@@ -109,13 +110,23 @@
 
             <!-- Bukworms in your area section -->
             <div class="map-area">
-                <h2 id="mapTitle">Bükwürms in your area:</h2>
-                <hr id="faves">
-                <div class="container">
-                    <div id="mapid"></div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h2 id="mapTitle">Bükwürms in your area:</h2>
+                        <hr id="faves">
+                        <div class="container">
+                            <div id="mapid"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h2 id="mapTitle">Chat:</h2>
+                        <hr id="faves">
+                        <div class="container">
+                            <div id="chatId"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
             <div class="search-area">
                 <h2 id="bookSearchTitle">Search for Books</h2>
                 <hr id="faves">
@@ -140,6 +151,10 @@
                 </div>
                 <br>
             </div>
+
+
+
+
         </div>
 
     </div>
