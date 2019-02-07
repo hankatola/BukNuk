@@ -400,6 +400,7 @@ margin: auto;
     padding: 5px;
     border-left: none;
     margin-top: 25px;
+    border-radius: 10px;
     margin-right: 20px;
     background: rgba(14, 1, 26, 0.4);
 }   
