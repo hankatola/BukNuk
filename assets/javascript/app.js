@@ -422,6 +422,17 @@ $(document).ready(function () {
         // Add marker showing current location
         addMarker(mymap, latLong, "My Location")
 
+
+        database.ref("location/").on("value", function (snapshot) {
+            snapshot.forEach(function(childSnapshot){
+                var value= childSnapshot.val().location.coords;
+
+                addMarker(mymap, [value.latitude, value.longitude], "Location of another Bükwürm")
+                
+            })
+        })
+    
+
         // Use the Leaflet library to hit the Mapbox API to get back a map, centered where the user currently is
         L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -432,18 +443,6 @@ $(document).ready(function () {
     }
      // Use the HTML5 built-in get location function to return the user's current location
     navigator.geolocation.getCurrentPosition(populateMap, useDefaultLocation);
-
-    database.ref("location/").on("value", function (snapshot) {
-        snapshot.forEach(function(childSnapshot){
-        var value= childSnapshot.val().location;
-        console.log(value);
-        })
-    })
-
-
-
-
-
 
     //document on ready closing tab//
 });
