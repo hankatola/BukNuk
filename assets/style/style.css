@@ -56,6 +56,8 @@ h1 {
     color: #eee4d0;
 }
 
+
+
 .signin input[type="text"],
 input[type="password"] {
     border: none;
@@ -412,6 +414,26 @@ margin: auto;
     height: 35vh;
     border: #6d1f09 solid 2px;
     background: rgba(14, 1, 26, 0.4);
+    border-radius: 5px;
+}
+
+/* Chat text area */
+#txtArea {
+    border: 1px solid #6d1f09; 
+    /* background-color: #eee4d0;  */
+    background: rgba(14, 1, 26, 0.4);
+    width: 100%; 
+    padding: 4px; 
+    margin: 5px; 
+    border-radius: 5px;
+}
+#chatBtn {
+    background: #66CDAA;
+    color: #eee4d0;
+    border: #3c2e27 2px solid;
+    margin-left: 25px;
+    margin-top: 5px;
+    border-radius: 5px;
 }
 
 /* User name in welcome nav span */
@@ -452,11 +474,3 @@ margin: auto;
     margin-left: 1vw;
 }
 
-/* Chat text area */
-#txtarea {
-    border: 1px solid #f0f040; 
-    background-color: #fffff0; 
-    width: 100%; 
-    padding: 4px; 
-    margin: 5px; 
-}
