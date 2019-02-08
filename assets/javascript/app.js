@@ -61,7 +61,9 @@ $(document).ready(function () {
                         var errorCode = error.code;
                         var errorMessage = error.message;
                         console.log(errorCode, errorMessage)
-                        $("#errorMessage2").css({display:"block"});
+                        $("#errorMessage2").css({
+                            display: "block"
+                        });
                     });
             })
             .catch(function (error) {
@@ -69,7 +71,9 @@ $(document).ready(function () {
                 var errorMessage = error.message;
                 console.log(errorCode, errorMessage)
                 alert("wrong")
-                $("#errorMessage2").css({display:"block"});
+                $("#errorMessage2").css({
+                    display: "block"
+                });
             });
     });
 
@@ -85,6 +89,9 @@ $(document).ready(function () {
                     var errorCode = error.code;
                     var errorMessage = error.message;
                     console.log(errorCode, errorMessage)
+                    $("#errorMessage1").css({
+                        display: "block"
+                    });
                 });
                 firebase.database().ref('location/' + user.user.uid).set({
                     location: currentUserLocation
@@ -94,7 +101,7 @@ $(document).ready(function () {
                 var errorCode = error.code;
                 var errorMessage = error.message;
                 console.log(errorCode, errorMessage)
-                $("#errorMessage1").css({display:"block"});
+
             });
     });
 
@@ -335,9 +342,10 @@ $(document).ready(function () {
         let key = '&key=AIzaSyChUVzDeaH60Pf8TmrXIE7tIMQWsLKHAss'
         let url = 'https://www.googleapis.com/books/v1/volumes?q=' + α + key
         $.get(url).then(function (β) {
+            console.log(β)
             for (let i in β.items) {
-                let title = β.items[i].volumeInfo.title
-                let link = β.items[i].volumeInfo.previewLink
+                let title = β.items[0].volumeInfo.title
+                let link = β.items[0].volumeInfo.previewLink
                 console.log(title)
                 console.log(link)
                 database.ref('location/' + currentUser + '/favorites/').child(title).child('title').set(title)
@@ -488,7 +496,6 @@ $(document).ready(function () {
                 }
                 book = JSON.stringify(book)
                 link = JSON.stringify(link)
-                console.log(book)
                 L.marker([value.latitude, value.longitude])
                     .bindPopup("This person just favorited " + book + "<br><a href=" + link + " target='_blank'>See this book on Google</a>")
                     .addTo(mymap);
