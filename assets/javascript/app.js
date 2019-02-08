@@ -224,7 +224,8 @@ $(document).ready(function () {
         $('#titleScroll').empty()
         α = $('#bookSearch').val()
         $('#bookSearch').val('')
-        let url = 'https://www.googleapis.com/books/v1/volumes?q=' + α
+        let key = '&key=AIzaSyChUVzDeaH60Pf8TmrXIE7tIMQWsLKHAss'
+        let url = 'https://www.googleapis.com/books/v1/volumes?q=' + α + key
         $.get(url).then(function (β) {
             for (let i in β.items) {
                 let imgURL = β.items[i].volumeInfo.imageLinks.thumbnail
@@ -246,7 +247,8 @@ $(document).ready(function () {
         } else {
            α = id
         }
-        let url = 'https://www.googleapis.com/books/v1/volumes/' + α
+        let key = '&key=AIzaSyChUVzDeaH60Pf8TmrXIE7tIMQWsLKHAss'
+        let url = 'https://www.googleapis.com/books/v1/volumes/' + α + key
         $.get(url).then(function(β) {
             /*
                 Parse out needed data from return value β and store in ω
@@ -341,7 +343,8 @@ $(document).ready(function () {
         α = α.val()[currentUser].favorites
         for (let i in α) {
             let γ = α[i]
-            let url = 'https://www.googleapis.com/books/v1/volumes?q=' + γ
+            let key = '&key=AIzaSyChUVzDeaH60Pf8TmrXIE7tIMQWsLKHAss'
+            let url = 'https://www.googleapis.com/books/v1/volumes?q=' + γ + key
             let imgURL
             $.get(url).then(function(β){
                 imgURL = β.items[0].volumeInfo.imageLinks.thumbnail
@@ -381,7 +384,7 @@ $(document).ready(function () {
         })
     }
     function showChat(α) {
-        let user = $('<strong>').text(α.val().user).addClass('text-gray-dark')
+        let user = $('<strong>').text(α.val().user)
         let time = α.val().time
         time = moment(time).format('MMM D, YYYY h:mm a')
         let t = $('<span>').text(time)
