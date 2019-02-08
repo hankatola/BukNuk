@@ -329,8 +329,18 @@ $(document).ready(function () {
         α = $(this).attr('data-id')
 
         database.ref('users/' + currentUser + '/favorites/').child(α).set(α)
-        database.ref('location/'+ currentUser + '/favorites/').child(α).set(α)
-
+        let key = '&key=AIzaSyChUVzDeaH60Pf8TmrXIE7tIMQWsLKHAss'
+        let url = 'https://www.googleapis.com/books/v1/volumes?q=' + α + key
+        $.get(url).then(function (β) {
+            for (let i in β.items) {
+                let title = β.items[i].volumeInfo.title
+                let link = β.items[i].volumeInfo.previewLink
+                console.log(title)
+                console.log(link)
+                database.ref('location/'+ currentUser + '/favorites/').child(title).child('title').set(title)
+                database.ref('location/'+ currentUser + '/favorites/').child(title).child('link').set(link)
+            }
+        })
     }
     function showFavorites(α) {
         /*
