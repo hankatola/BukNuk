@@ -391,7 +391,7 @@ $(document).ready(function () {
         let text = $('<span>').text(α.val().message)
         let a = $('<div>').addClass('d-flex justify-content-between align-items-center w-100')
         let b = $('<div>').addClass('media-body pb-3 mb-0 small lh-125 border-bottom border-gray')
-        let c = $('<div>').addClass('media text-muted pt-3')
+        let c = $('<div>').addClass('media pt-3')
         a.append(user)
         a.append(t)
         a.appendTo(b)
