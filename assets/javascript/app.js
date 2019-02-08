@@ -329,7 +329,7 @@ $(document).ready(function () {
         α = $(this).attr('data-id')
 
         database.ref('users/' + currentUser + '/favorites/').child(α).set(α)
-        database.ref('favoriteBooks').child(α).child(currentUser).set(currentUserLocation)
+        database.ref('location/'+ currentUser + '/favorites/').child(α).set(α)
 
     }
     function showFavorites(α) {
@@ -463,6 +463,8 @@ $(document).ready(function () {
         database.ref("location/").on("value", function (snapshot) {
             snapshot.forEach(function(childSnapshot){
                 var value= childSnapshot.val().location.coords;
+                var books = childSnapshot.val().favorites;
+                console.log(books)
 
                 addMarker(mymap, [value.latitude, value.longitude], "Location of another Bükwürm")
             })
