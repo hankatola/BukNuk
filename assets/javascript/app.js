@@ -247,8 +247,8 @@ $(document).ready(function () {
         } else {
            α = id
         }
-        let key = '&key=AIzaSyChUVzDeaH60Pf8TmrXIE7tIMQWsLKHAss'
-        let url = 'https://www.googleapis.com/books/v1/volumes/' + α + key
+        // let key = '&key=AIzaSyChUVzDeaH60Pf8TmrXIE7tIMQWsLKHAss'
+        let url = 'https://www.googleapis.com/books/v1/volumes/' + α //+ key
         $.get(url).then(function(β) {
             /*
                 Parse out needed data from return value β and store in ω
