@@ -367,7 +367,7 @@ $(document).ready(function () {
                 img.css('height', '190px').css('width', '128px')
                 let btn = $('<i>').addClass('fas fa-minus-circle remove-from-favorites')
                 btn.attr('data-id', γ).css('font-size', '24px')
-                btn.css('position', 'relative').css('bottom', '-75px').css('right', '30px')
+                btn.css('position', 'relative').css('bottom', '30px').css('right', '-100px')
                 img.appendTo(div)
                 btn.appendTo(div)
                 let box = $('<div>').attr('data-id', γ)
