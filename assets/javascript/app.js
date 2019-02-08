@@ -383,17 +383,20 @@ $(document).ready(function () {
         })
         $('#search-results').empty()
     }
-    function pushChat(α) {
+    $("#chatBtn").on('click',function(α){
         α.preventDefault()
-        let message = $('#chat-message').val().trim()
-        $('#chat-message').val('')
+        console.log("Hello!")
+        let message = $('#txtArea').val().trim()
+        $('#txtArea').val('')
         database.ref('chat').push({
             user:thisUser.username,
             message:message,
             time:firebase.database.ServerValue.TIMESTAMP
         })
-    }
+
+    })
     function showChat(α) {
+        console.log("wowee!!")
         let user = $('<strong>').text(α.val().user)
         let time = α.val().time
         time = moment(time).format('MMM D, YYYY h:mm a')
@@ -418,7 +421,7 @@ $(document).ready(function () {
     $(document).on('click', '.search-image', bookDetail)
     $(document).on('click','#add-to-favorites',pushToFavorites)
     $(document).on('click','.remove-from-favorites',removeFavorite)
-    $(document).on('click','#chat-button',pushChat)
+    
     database.ref('chat').on('child_added',showChat)
 
 
