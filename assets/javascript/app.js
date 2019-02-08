@@ -28,15 +28,17 @@ $(document).ready(function () {
         }
     }
 
-    navigator.geolocation.getCurrentPosition(function (position) {
-        var userLocation = {
-            coords: {
-                latitude: position.coords.latitude,
-                longitude: position.coords.longitude
+    if(!window.location.href.includes("signOut.html")){
+        navigator.geolocation.getCurrentPosition(function (position) {
+            var userLocation = {
+                coords: {
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude
+                }
             }
-        }
-        currentUserLocation = userLocation
-    })
+            currentUserLocation = userLocation
+        })
+    }
 
     //sign up action//
     $("#signupSubmit").on("click", function (e) {
@@ -507,7 +509,9 @@ $(document).ready(function () {
         }).addTo(mymap);
     }
     // Use the HTML5 built-in get location function to return the user's current location
-    navigator.geolocation.getCurrentPosition(populateMap, useDefaultLocation);
+    if(!window.location.href.includes("signOut.html")){
+        navigator.geolocation.getCurrentPosition(populateMap, useDefaultLocation);
+    }
 
     //document on ready closing tab//
 });
