@@ -333,7 +333,7 @@ body {
     border-radius: 10px;
     border: #6d1f09 solid 2px;
     float: left;  
-    padding: 5px;
+    padding: 3.5vw;
     margin-left: 1vw;
     margin-top: 1vh;
     background: rgba(14, 1, 26, 0.4);
@@ -387,7 +387,7 @@ margin: auto;
     padding-left: 4.5vw;;
     padding-top: 10px;
     margin-top: 25px;
-    margin-left: 1.5vw;
+    margin-left: 3vw;
     background: rgba(14, 1, 26, 0.4);
 
 }
@@ -434,7 +434,7 @@ margin: auto;
     background: #66CDAA;
     color: #eee4d0;
     border: #3c2e27 2px solid;
-    margin-left: 25px;
+    margin-left: 5px;
     margin-top: 5px;
     border-radius: 5px;
 }

@@ -16,24 +16,24 @@
     <!-- Favorite icons -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
         crossorigin="anonymous">
-     
+     
     <!-- Leaflet CSS -->
-        
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"    integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-           crossorigin="" />   
+        
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"    integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+           crossorigin="" />   
     <link href="assets/style/map.css" rel="stylesheet">
 
-       
+       
     <!-- Leaflet JS library -->
-        <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"     integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-            crossorigin=""></script>
+        <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"     integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+            crossorigin=""></script>
 
-        <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-database.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="assets/javascript/map.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="assets/javascript/map.js"></script>
     <!--simplebar-->
     <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css" />
     <script src="https://unpkg.com/simplebar@latest/dist/simplebar.js"></script>
@@ -47,7 +47,6 @@
         <button type="button" class="btn navbar-light" id="sign-out-button">Sign Out</button>
         </a>
     </nav>
-
     <!-- User profile image section -->
     <div class="container">
         <div class="col-lg-4 left-side">
@@ -57,7 +56,6 @@
                 <div class="image-here"><img src="assets/images/blank-user.png" id="blank-profile-pic"></div>
                 <form>
                     <div class="form-group">
-
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary" id="userBtn" data-toggle="modal" data-target="#exampleModal">
                             Edit Profile
@@ -65,7 +63,6 @@
                     </div>
                 </form>
             </div>
-
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
@@ -94,20 +91,15 @@
                     </div>
                 </div>
             </div>
-
             <!-- Favorites section -->
             <div class="favorites-area">
                 <h2 id="faveTitle">My Favorite Books</h2>
                 <hr id="faves">
                 <div id="faveBooks"></div>
             </div>
-
         </div>
-
         <!-- Book search section -->
         <div class="col-lg-8 right-side">
-
-
             <!-- Bukworms in your area section -->
             <div class="map-area">
                 <div class="row">
@@ -122,16 +114,12 @@
                     <div class="col-lg-6">
                         <h2 id="mapTitle">Chat:</h2>
                         <hr id="faves">
-
                         <div id="chatId"></div>
-
                         <form action="#" method="GET">
                             <input class='inputUserName' name='Msg' type='text' id="txtArea" placeholder='Enter your message...'>
                             <input type="submit" id="chatBtn">
                         </form>
-
                     </div>
-
                 </div>
             </div>
             <div class="search-area">
@@ -158,12 +146,7 @@
                 <!-- </div> -->
                 <br>
             </div>
-
-
-
-
         </div>
-
     </div>
     <!-- Moment JS -->
     <script src='https://momentjs.com/downloads/moment-with-locales.min.js'></script>
@@ -182,7 +165,5 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Javascript -->
     <script src="assets/javascript/app.js"></script>
-
 </body>
-
 </html>
