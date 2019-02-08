@@ -478,3 +478,9 @@ margin: auto;
     margin-left: 1vw;
 }
 
+#errorMessage1{
+    display:none;
+}
+#errorMessage2{
+    display:none;
+}

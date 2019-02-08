@@ -61,14 +61,15 @@ $(document).ready(function () {
                         var errorCode = error.code;
                         var errorMessage = error.message;
                         console.log(errorCode, errorMessage)
+                        $("#errorMessage2").css({display:"block"});
                     });
             })
             .catch(function (error) {
-                // Handle Errors here.
                 var errorCode = error.code;
                 var errorMessage = error.message;
                 console.log(errorCode, errorMessage)
-                alert("please try again, Sign Up unsuccesful")
+                alert("wrong")
+                $("#errorMessage2").css({display:"block"});
             });
     });
 
@@ -81,7 +82,6 @@ $(document).ready(function () {
         firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
             .then(function () {
                 firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
-                    // Handle Errors here.
                     var errorCode = error.code;
                     var errorMessage = error.message;
                     console.log(errorCode, errorMessage)
@@ -94,6 +94,7 @@ $(document).ready(function () {
                 var errorCode = error.code;
                 var errorMessage = error.message;
                 console.log(errorCode, errorMessage)
+                $("#errorMessage1").css({display:"block"});
             });
     });
 
