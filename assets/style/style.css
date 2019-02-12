@@ -264,6 +264,7 @@ body {
 
 .right-side {
     float: right;
+    
 }
 
 /* Zip code input border */
@@ -516,4 +517,65 @@ body {
 
 #errorMessage2 {
     display: none;
+}
+
+@media screen and (max-width:1108px){
+#add-to-favorites{
+    top:-30px;
+    left:95px;
+}
+.remove-from-favorites{
+    top:80px;
+    left:-30px;
+}
+}
+@media screen and (max-width:992px){
+ .image-here{
+      margin:20px;
+ }
+ .map-area{
+     min-height:900px;
+ }
+}
+@media screen and (max-width:900px){
+    #faveBooks{
+        padding:5px;
+    }
+   #titleScroll{
+       padding:5px;
+   }
+   #blank-profile-pic{
+       height:150px;
+       width:150px;
+   }
+   .image-here{
+       height:150px;
+       width:150px;
+   }
+@media screen and (max-width:758px){
+    #blank-profile-pic{
+        height:250px;
+        width:250px;
+    }
+    .image-here{
+        height:250px;
+        width:250px;
+    }
+    #add-to-favorites{
+        top:75px;
+        left:-30px;
+    }
+}
+@media screen and (max-width:700px){
+   #titleScroll{
+       min-width:150px;
+   }
+}
+@media screen and (max-width:528px){
+    #add-to-favorites{
+        top:-40px;
+        left:100px;
+    }
+}
+
 }
