@@ -289,7 +289,9 @@ $(document).ready(function () {
             btn.css('position', 'relative').css('bottom', '-80px').css('right', '30px')
             // create info section
             let ttle = $('<div>').html('<strong>' + ω.title + '</strong>')
+            ttle.addClass("details");
             let athr = $('<div>').text('Author: ' + ω.author)
+            athr.addClass("details");
             if (ω.rating) { // rating is book rating 'n' stars out of 5
                 ω.rating = ω.rating + '/5' // & isn't returned if it doesn't exist
             } else {
@@ -299,10 +301,15 @@ $(document).ready(function () {
                 ω.publisher = 'No data available' // publisher isn't returned if unknown
             }
             let rtng = $('<div>').text('Rating: ' + ω.rating)
+            rtng.addClass("details");
             let pges = $('<div>').text('Pages: ' + ω.pages)
+            pges.addClass("details");
             let pubr = $('<div>').text('Publisher: ' + ω.publisher)
+            pubr.addClass("details");
             let pbdt = $('<div>').text('Date: ' + ω.date)
+            pbdt.addClass("details");
             let link = $('<div>').html('<a href="' + ω.link + '">View on Google Play Books</a>')
+            link.addClass("details");
             // info object is ttle
             ttle.append(athr, rtng, pges, pubr, pbdt, link)
             /*
